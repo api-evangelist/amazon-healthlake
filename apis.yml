@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Healthcare
+  - AWS
   - FHIR
   - Health Data
+  - Healthcare
   - HIPAA
-  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -28,9 +28,9 @@ apis:
     humanURL: https://aws.amazon.com/healthlake/
     baseURL: https://healthlake.amazonaws.com
     tags:
-      - Healthcare
       - FHIR
       - Health Data
+      - Healthcare
     properties:
       - type: Documentation
         url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
