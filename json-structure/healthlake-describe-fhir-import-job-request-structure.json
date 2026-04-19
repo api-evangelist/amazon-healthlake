@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-describe-fhir-import-job-request-schema.json",
+  "name": "DescribeFHIRImportJobRequest",
+  "type": "object",
+  "required": [
+    "DatastoreId",
+    "JobId"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS-generated ID of the data store."
+        }
+      ]
+    },
+    "JobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The AWS-generated job ID."
+        }
+      ]
+    }
+  }
+}

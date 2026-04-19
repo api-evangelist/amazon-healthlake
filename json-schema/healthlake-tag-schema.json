@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-tag-schema.json",
+  "title": "Tag",
+  "type": "object",
+  "required": [
+    "Key",
+    "Value"
+  ],
+  "properties": {
+    "Key": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagKey"
+        },
+        {
+          "description": " The key portion of a tag. Tag keys are case sensitive. "
+        }
+      ]
+    },
+    "Value": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagValue"
+        },
+        {
+          "description": " The value portion of a tag. Tag values are case sensitive. "
+        }
+      ]
+    }
+  },
+  "description": " A tag is a label consisting of a user-defined key and value. The form for tags is {\"Key\", \"Value\"} "
+}

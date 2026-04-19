@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-export-job-properties-schema.json",
+  "title": "ExportJobProperties",
+  "type": "object",
+  "required": [
+    "JobId",
+    "JobStatus",
+    "SubmitTime",
+    "DatastoreId",
+    "OutputDataConfig"
+  ],
+  "properties": {
+    "JobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The AWS generated ID for an export job."
+        }
+      ]
+    },
+    "JobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The user generated name for an export job."
+        }
+      ]
+    },
+    "JobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The status of a FHIR export job. Possible statuses are SUBMITTED, IN_PROGRESS, COMPLETED, or FAILED."
+        }
+      ]
+    },
+    "SubmitTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time an export job was initiated."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time an export job completed."
+        }
+      ]
+    },
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS generated ID for the data store from which files are being exported for an export job."
+        }
+      ]
+    },
+    "OutputDataConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutputDataConfig"
+        },
+        {
+          "description": "The output data configuration that was supplied when the export job was created."
+        }
+      ]
+    },
+    "DataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IamRoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name used during the initiation of the job."
+        }
+      ]
+    },
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "An explanation of any errors that may have occurred during the export job."
+        }
+      ]
+    }
+  },
+  "description": "The properties of a FHIR export job, including the ID, ARN, name, and the status of the job."
+}

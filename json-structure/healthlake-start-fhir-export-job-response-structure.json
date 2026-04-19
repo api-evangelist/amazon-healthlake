@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-start-fhir-export-job-response-schema.json",
+  "name": "StartFHIRExportJobResponse",
+  "type": "object",
+  "required": [
+    "JobId",
+    "JobStatus"
+  ],
+  "properties": {
+    "JobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The AWS generated ID for an export job."
+        }
+      ]
+    },
+    "JobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The status of a FHIR export job. Possible statuses are SUBMITTED, IN_PROGRESS, COMPLETED, or FAILED."
+        }
+      ]
+    },
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS generated ID for the data store from which files are being exported for an export job."
+        }
+      ]
+    }
+  }
+}

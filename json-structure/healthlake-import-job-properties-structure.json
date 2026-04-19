@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-import-job-properties-schema.json",
+  "name": "ImportJobProperties",
+  "type": "object",
+  "required": [
+    "JobId",
+    "JobStatus",
+    "SubmitTime",
+    "DatastoreId",
+    "InputDataConfig"
+  ],
+  "properties": {
+    "JobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The AWS-generated id number for the Import job."
+        }
+      ]
+    },
+    "JobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The user-generated name for an Import job."
+        }
+      ]
+    },
+    "JobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The job status for an Import job. Possible statuses are SUBMITTED, IN_PROGRESS, COMPLETED_WITH_ERRORS, COMPLETED, FAILED."
+        }
+      ]
+    },
+    "SubmitTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time that the Import job was submitted for processing."
+        }
+      ]
+    },
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time that the Import job was completed."
+        }
+      ]
+    },
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The datastore id used when the Import job was created. "
+        }
+      ]
+    },
+    "InputDataConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InputDataConfig"
+        },
+        {
+          "description": "The input data configuration that was supplied when the Import job was created."
+        }
+      ]
+    },
+    "JobOutputDataConfig": {
+      "$ref": "#/components/schemas/OutputDataConfig"
+    },
+    "DataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IamRoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) that gives AWS HealthLake access to your input data."
+        }
+      ]
+    },
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "An explanation of any errors that may have occurred during the FHIR import job. "
+        }
+      ]
+    }
+  },
+  "description": "Displays the properties of the import job, including the ID, Arn, Name, and the status of the data store."
+}

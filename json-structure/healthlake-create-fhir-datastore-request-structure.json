@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-create-fhir-datastore-request-schema.json",
+  "name": "CreateFHIRDatastoreRequest",
+  "type": "object",
+  "required": [
+    "DatastoreTypeVersion"
+  ],
+  "properties": {
+    "DatastoreName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreName"
+        },
+        {
+          "description": "The user generated name for the data store."
+        }
+      ]
+    },
+    "DatastoreTypeVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FHIRVersion"
+        },
+        {
+          "description": "The FHIR version of the data store. The only supported version is R4."
+        }
+      ]
+    },
+    "SseConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SseConfiguration"
+        },
+        {
+          "description": " The server-side encryption key configuration for a customer provided encryption key specified for creating a data store. "
+        }
+      ]
+    },
+    "PreloadDataConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PreloadDataConfig"
+        },
+        {
+          "description": "Optional parameter to preload data upon creation of the data store. Currently, the only supported preloaded data is synthetic data generated from Synthea."
+        }
+      ]
+    },
+    "ClientToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientTokenString"
+        },
+        {
+          "description": "Optional user provided token used for ensuring idempotency."
+        }
+      ]
+    },
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagList"
+        },
+        {
+          "description": " Resource tags that are applied to a data store when it is created. "
+        }
+      ]
+    },
+    "IdentityProviderConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IdentityProviderConfiguration"
+        },
+        {
+          "description": "The configuration of the identity provider that you want to use for your data store."
+        }
+      ]
+    }
+  }
+}

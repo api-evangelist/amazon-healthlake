@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-create-fhir-datastore-response-schema.json",
+  "title": "CreateFHIRDatastoreResponse",
+  "type": "object",
+  "required": [
+    "DatastoreId",
+    "DatastoreArn",
+    "DatastoreStatus",
+    "DatastoreEndpoint"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS-generated data store id. This id is in the output from the initial data store creation call."
+        }
+      ]
+    },
+    "DatastoreArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreArn"
+        },
+        {
+          "description": "The data store ARN is generated during the creation of the data store and can be found in the output from the initial data store creation call."
+        }
+      ]
+    },
+    "DatastoreStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreStatus"
+        },
+        {
+          "description": "The status of the FHIR data store."
+        }
+      ]
+    },
+    "DatastoreEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BoundedLengthString"
+        },
+        {
+          "description": "The AWS endpoint for the created data store."
+        }
+      ]
+    }
+  }
+}

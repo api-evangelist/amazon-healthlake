@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-describe-fhir-export-job-request-schema.json",
+  "title": "DescribeFHIRExportJobRequest",
+  "type": "object",
+  "required": [
+    "DatastoreId",
+    "JobId"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS generated ID for the data store from which files are being exported from for an export job."
+        }
+      ]
+    },
+    "JobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The AWS generated ID for an export job."
+        }
+      ]
+    }
+  }
+}

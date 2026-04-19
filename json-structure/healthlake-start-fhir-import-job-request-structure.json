@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-start-fhir-import-job-request-schema.json",
+  "name": "StartFHIRImportJobRequest",
+  "type": "object",
+  "required": [
+    "InputDataConfig",
+    "JobOutputDataConfig",
+    "DatastoreId",
+    "DataAccessRoleArn",
+    "ClientToken"
+  ],
+  "properties": {
+    "JobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The name of the FHIR Import job in the StartFHIRImport job request."
+        }
+      ]
+    },
+    "InputDataConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InputDataConfig"
+        },
+        {
+          "description": "The input properties of the FHIR Import job in the StartFHIRImport job request."
+        }
+      ]
+    },
+    "JobOutputDataConfig": {
+      "$ref": "#/components/schemas/OutputDataConfig"
+    },
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS-generated data store ID."
+        }
+      ]
+    },
+    "DataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IamRoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) that gives AWS HealthLake access permission."
+        }
+      ]
+    },
+    "ClientToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientTokenString"
+        },
+        {
+          "description": "Optional user provided token used for ensuring idempotency."
+        }
+      ]
+    }
+  }
+}

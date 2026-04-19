@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-next-token-schema.json",
+  "name": "NextToken",
+  "type": "string",
+  "pattern": "\\p{ASCII}{0,8192}",
+  "maxLength": 8192
+}

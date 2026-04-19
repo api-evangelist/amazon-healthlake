@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-delete-fhir-datastore-request-schema.json",
+  "title": "DeleteFHIRDatastoreRequest",
+  "type": "object",
+  "required": [
+    "DatastoreId"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": " The AWS-generated ID for the data store to be deleted."
+        }
+      ]
+    }
+  }
+}

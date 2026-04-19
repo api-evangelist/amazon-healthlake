@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-preload-data-config-schema.json",
+  "title": "PreloadDataConfig",
+  "type": "object",
+  "required": [
+    "PreloadDataType"
+  ],
+  "properties": {
+    "PreloadDataType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PreloadDataType"
+        },
+        {
+          "description": "The type of preloaded data. Only Synthea preloaded data is supported."
+        }
+      ]
+    }
+  },
+  "description": " The input properties for the preloaded data store. Only data preloaded from Synthea is supported."
+}

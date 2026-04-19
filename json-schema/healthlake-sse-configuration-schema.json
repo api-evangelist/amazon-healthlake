@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-sse-configuration-schema.json",
+  "title": "SseConfiguration",
+  "type": "object",
+  "required": [
+    "KmsEncryptionConfig"
+  ],
+  "properties": {
+    "KmsEncryptionConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/KmsEncryptionConfig"
+        },
+        {
+          "description": " The KMS encryption configuration used to provide details for data encryption. "
+        }
+      ]
+    }
+  },
+  "description": " The server-side encryption key configuration for a customer provided encryption key. "
+}

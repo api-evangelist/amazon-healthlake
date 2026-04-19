@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-cmk-type-schema.json",
+  "title": "CmkType",
+  "type": "string",
+  "enum": [
+    "CUSTOMER_MANAGED_KMS_KEY",
+    "AWS_OWNED_KMS_KEY"
+  ]
+}

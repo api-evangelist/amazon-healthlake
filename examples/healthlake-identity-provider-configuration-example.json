@@ -1,0 +1,6 @@
+{
+  "AuthorizationStrategy": null,
+  "FineGrainedAuthorizationEnabled": null,
+  "Metadata": null,
+  "IdpLambdaArn": null
+}

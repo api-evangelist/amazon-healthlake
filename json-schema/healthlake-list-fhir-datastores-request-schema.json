@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-list-fhir-datastores-request-schema.json",
+  "title": "ListFHIRDatastoresRequest",
+  "type": "object",
+  "properties": {
+    "Filter": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreFilter"
+        },
+        {
+          "description": "Lists all filters associated with a FHIR data store request."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "Fetches the next page of data stores when results are paginated."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MaxResultsInteger"
+        },
+        {
+          "description": "The maximum number of data stores returned in a single page of a ListFHIRDatastoresRequest call."
+        }
+      ]
+    }
+  }
+}

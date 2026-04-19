@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-list-fhir-export-jobs-response-schema.json",
+  "name": "ListFHIRExportJobsResponse",
+  "type": "object",
+  "required": [
+    "ExportJobPropertiesList"
+  ],
+  "properties": {
+    "ExportJobPropertiesList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ExportJobPropertiesList"
+        },
+        {
+          "description": " The properties of listed FHIR export jobs, including the ID, ARN, name, and the status of the job. "
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": " A pagination token used to identify the next page of results to return for a ListFHIRExportJobs query. "
+        }
+      ]
+    }
+  }
+}

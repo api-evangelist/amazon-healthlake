@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-list-fhir-datastores-response-schema.json",
+  "title": "ListFHIRDatastoresResponse",
+  "type": "object",
+  "required": [
+    "DatastorePropertiesList"
+  ],
+  "properties": {
+    "DatastorePropertiesList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastorePropertiesList"
+        },
+        {
+          "description": "All properties associated with the listed data stores."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "Pagination token that can be used to retrieve the next page of results."
+        }
+      ]
+    }
+  }
+}

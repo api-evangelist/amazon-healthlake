@@ -1,0 +1,8 @@
+{
+  "JobName": null,
+  "InputDataConfig": null,
+  "JobOutputDataConfig": null,
+  "DatastoreId": null,
+  "DataAccessRoleArn": null,
+  "ClientToken": null
+}

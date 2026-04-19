@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-list-fhir-import-jobs-request-schema.json",
+  "title": "ListFHIRImportJobsRequest",
+  "type": "object",
+  "required": [
+    "DatastoreId"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": " This parameter limits the response to the import job with the specified data store ID. "
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": " A pagination token used to identify the next page of results to return for a ListFHIRImportJobs query. "
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MaxResultsInteger"
+        },
+        {
+          "description": " This parameter limits the number of results returned for a ListFHIRImportJobs to a maximum quantity specified by the user. "
+        }
+      ]
+    },
+    "JobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": " This parameter limits the response to the import job with the specified job name. "
+        }
+      ]
+    },
+    "JobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": " This parameter limits the response to the import job with the specified job status. "
+        }
+      ]
+    },
+    "SubmittedBefore": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " This parameter limits the response to FHIR import jobs submitted before a user specified date. "
+        }
+      ]
+    },
+    "SubmittedAfter": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " This parameter limits the response to FHIR import jobs submitted after a user specified date. "
+        }
+      ]
+    }
+  }
+}

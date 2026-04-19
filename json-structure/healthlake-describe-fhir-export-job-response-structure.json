@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-describe-fhir-export-job-response-schema.json",
+  "name": "DescribeFHIRExportJobResponse",
+  "type": "object",
+  "required": [
+    "ExportJobProperties"
+  ],
+  "properties": {
+    "ExportJobProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ExportJobProperties"
+        },
+        {
+          "description": "Displays the properties of the export job, including the ID, Arn, Name, and the status of the job. "
+        }
+      ]
+    }
+  }
+}

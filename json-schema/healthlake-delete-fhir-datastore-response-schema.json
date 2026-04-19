@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-delete-fhir-datastore-response-schema.json",
+  "title": "DeleteFHIRDatastoreResponse",
+  "type": "object",
+  "required": [
+    "DatastoreId",
+    "DatastoreArn",
+    "DatastoreStatus",
+    "DatastoreEndpoint"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS-generated ID for the data store to be deleted."
+        }
+      ]
+    },
+    "DatastoreArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) that gives AWS HealthLake access permission."
+        }
+      ]
+    },
+    "DatastoreStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreStatus"
+        },
+        {
+          "description": "The status of the data store that the user has requested to be deleted. "
+        }
+      ]
+    },
+    "DatastoreEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BoundedLengthString"
+        },
+        {
+          "description": "The AWS endpoint for the data store the user has requested to be deleted."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-output-data-config-schema.json",
+  "name": "OutputDataConfig",
+  "type": "object",
+  "properties": {
+    "S3Configuration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3Configuration"
+        },
+        {
+          "description": " The output data configuration that was supplied when the export job was created. "
+        }
+      ]
+    }
+  },
+  "description": "The output data configuration that was supplied when the export job was created."
+}

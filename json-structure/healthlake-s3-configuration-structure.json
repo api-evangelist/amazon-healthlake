@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-s3-configuration-schema.json",
+  "name": "S3Configuration",
+  "type": "object",
+  "required": [
+    "S3Uri",
+    "KmsKeyId"
+  ],
+  "properties": {
+    "S3Uri": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3Uri"
+        },
+        {
+          "description": " The S3Uri is the user specified S3 location of the FHIR data to be imported into AWS HealthLake. "
+        }
+      ]
+    },
+    "KmsKeyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionKeyID"
+        },
+        {
+          "description": " The KMS key ID used to access the S3 bucket. "
+        }
+      ]
+    }
+  },
+  "description": " The configuration of the S3 bucket for either an import or export job. This includes assigning permissions for access. "
+}

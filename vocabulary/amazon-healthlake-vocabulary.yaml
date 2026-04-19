@@ -1,0 +1,37 @@
+name: Amazon HealthLake Vocabulary
+version: 1.0.0
+description: Unified taxonomy mapping resources, actions, workflows, and personas for Amazon HealthLake.
+resources:
+  - name: FHIRDatastore
+    description: FHIR-compliant datastore for health data storage and retrieval
+  - name: FHIRImportJob
+    description: Batch job for importing FHIR-formatted health data
+  - name: FHIRExportJob
+    description: Batch job for exporting FHIR-formatted health data
+  - name: Tag
+    description: Key-value pair metadata attached to resources
+actions:
+  - name: Create
+    description: Create a new resource
+  - name: Describe
+    description: Get detailed information about a resource
+  - name: List
+    description: List multiple resources
+  - name: Delete
+    description: Delete a resource
+  - name: Start
+    description: Start an asynchronous job
+  - name: Tag
+    description: Apply tags to a resource
+  - name: Untag
+    description: Remove tags from a resource
+workflows:
+  - name: FHIR Data Migration
+    description: Import FHIR health data from S3 into a HealthLake datastore
+personas:
+  - name: Healthcare Developer
+    description: Developer building healthcare applications using FHIR APIs
+  - name: FHIR Data Engineer
+    description: Engineer specializing in FHIR data integration and transformation
+  - name: HIPAA Compliance Officer
+    description: Officer responsible for ensuring HIPAA compliance in health data handling

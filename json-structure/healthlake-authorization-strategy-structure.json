@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-authorization-strategy-schema.json",
+  "name": "AuthorizationStrategy",
+  "type": "string",
+  "enum": [
+    "SMART_ON_FHIR_V1",
+    "AWS_AUTH"
+  ]
+}

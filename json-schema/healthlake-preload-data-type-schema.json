@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-preload-data-type-schema.json",
+  "title": "PreloadDataType",
+  "type": "string",
+  "enum": [
+    "SYNTHEA"
+  ]
+}

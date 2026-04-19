@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-describe-fhir-import-job-response-schema.json",
+  "title": "DescribeFHIRImportJobResponse",
+  "type": "object",
+  "required": [
+    "ImportJobProperties"
+  ],
+  "properties": {
+    "ImportJobProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImportJobProperties"
+        },
+        {
+          "description": "The properties of the Import job request, including the ID, ARN, name, and the status of the job."
+        }
+      ]
+    }
+  }
+}

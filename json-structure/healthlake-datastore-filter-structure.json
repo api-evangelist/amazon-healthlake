@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-datastore-filter-schema.json",
+  "name": "DatastoreFilter",
+  "type": "object",
+  "properties": {
+    "DatastoreName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreName"
+        },
+        {
+          "description": "Allows the user to filter data store results by name."
+        }
+      ]
+    },
+    "DatastoreStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreStatus"
+        },
+        {
+          "description": "Allows the user to filter data store results by status."
+        }
+      ]
+    },
+    "CreatedBefore": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "A filter that allows the user to set cutoff dates for records. All data stores created before the specified date will be included in the results. "
+        }
+      ]
+    },
+    "CreatedAfter": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "A filter that allows the user to set cutoff dates for records. All data stores created after the specified date will be included in the results."
+        }
+      ]
+    }
+  },
+  "description": "The filters applied to data store query."
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-tag-resource-request-schema.json",
+  "title": "TagResourceRequest",
+  "type": "object",
+  "required": [
+    "ResourceARN",
+    "Tags"
+  ],
+  "properties": {
+    "ResourceARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AmazonResourceName"
+        },
+        {
+          "description": " The Amazon Resource Name(ARN)that gives AWS HealthLake access to the data store which tags are being added to. "
+        }
+      ]
+    },
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagList"
+        },
+        {
+          "description": " The user specified key and value pair tags being added to a data store. "
+        }
+      ]
+    }
+  }
+}

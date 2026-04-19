@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-bounded-length-string-schema.json",
+  "name": "BoundedLengthString",
+  "type": "string",
+  "pattern": "[\\P{M}\\p{M}]{1,5000}",
+  "minLength": 1,
+  "maxLength": 5000
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-datastore-status-schema.json",
+  "name": "DatastoreStatus",
+  "type": "string",
+  "enum": [
+    "CREATING",
+    "ACTIVE",
+    "DELETING",
+    "DELETED"
+  ]
+}

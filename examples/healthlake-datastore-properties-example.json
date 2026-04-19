@@ -1,0 +1,12 @@
+{
+  "DatastoreId": null,
+  "DatastoreArn": null,
+  "DatastoreName": null,
+  "DatastoreStatus": null,
+  "CreatedAt": null,
+  "DatastoreTypeVersion": null,
+  "DatastoreEndpoint": null,
+  "SseConfiguration": null,
+  "PreloadDataConfig": null,
+  "IdentityProviderConfiguration": null
+}

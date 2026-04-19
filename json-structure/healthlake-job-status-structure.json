@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-job-status-schema.json",
+  "name": "JobStatus",
+  "type": "string",
+  "enum": [
+    "SUBMITTED",
+    "IN_PROGRESS",
+    "COMPLETED_WITH_ERRORS",
+    "COMPLETED",
+    "FAILED",
+    "CANCEL_SUBMITTED",
+    "CANCEL_IN_PROGRESS",
+    "CANCEL_COMPLETED",
+    "CANCEL_FAILED"
+  ]
+}

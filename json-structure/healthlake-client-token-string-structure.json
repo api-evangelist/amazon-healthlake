@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-client-token-string-schema.json",
+  "name": "ClientTokenString",
+  "type": "string",
+  "pattern": "^[a-zA-Z0-9-]+$",
+  "minLength": 1,
+  "maxLength": 64
+}

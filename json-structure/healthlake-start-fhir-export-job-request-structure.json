@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-start-fhir-export-job-request-schema.json",
+  "name": "StartFHIRExportJobRequest",
+  "type": "object",
+  "required": [
+    "OutputDataConfig",
+    "DatastoreId",
+    "DataAccessRoleArn",
+    "ClientToken"
+  ],
+  "properties": {
+    "JobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The user generated name for an export job."
+        }
+      ]
+    },
+    "OutputDataConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutputDataConfig"
+        },
+        {
+          "description": "The output data configuration that was supplied when the export job was created."
+        }
+      ]
+    },
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS generated ID for the data store from which files are being exported for an export job."
+        }
+      ]
+    },
+    "DataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IamRoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name used during the initiation of the job."
+        }
+      ]
+    },
+    "ClientToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientTokenString"
+        },
+        {
+          "description": "An optional user provided token used for ensuring idempotency."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-describe-fhir-datastore-response-schema.json",
+  "name": "DescribeFHIRDatastoreResponse",
+  "type": "object",
+  "required": [
+    "DatastoreProperties"
+  ],
+  "properties": {
+    "DatastoreProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreProperties"
+        },
+        {
+          "description": "All properties associated with a data store, including the data store ID, data store ARN, data store name, data store status, when the data store was created, data store type version, and the data store's endpoint."
+        }
+      ]
+    }
+  }
+}

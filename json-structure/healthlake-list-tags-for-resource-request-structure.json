@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-list-tags-for-resource-request-schema.json",
+  "name": "ListTagsForResourceRequest",
+  "type": "object",
+  "required": [
+    "ResourceARN"
+  ],
+  "properties": {
+    "ResourceARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AmazonResourceName"
+        },
+        {
+          "description": " The Amazon Resource Name(ARN) of the data store for which tags are being added. "
+        }
+      ]
+    }
+  }
+}

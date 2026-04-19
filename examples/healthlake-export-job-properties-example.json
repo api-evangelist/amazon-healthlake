@@ -1,0 +1,11 @@
+{
+  "JobId": null,
+  "JobName": null,
+  "JobStatus": null,
+  "SubmitTime": null,
+  "EndTime": null,
+  "DatastoreId": null,
+  "OutputDataConfig": null,
+  "DataAccessRoleArn": null,
+  "Message": null
+}

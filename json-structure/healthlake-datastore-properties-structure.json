@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-datastore-properties-schema.json",
+  "name": "DatastoreProperties",
+  "type": "object",
+  "required": [
+    "DatastoreId",
+    "DatastoreArn",
+    "DatastoreStatus",
+    "DatastoreTypeVersion",
+    "DatastoreEndpoint"
+  ],
+  "properties": {
+    "DatastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The AWS-generated ID number for the data store."
+        }
+      ]
+    },
+    "DatastoreArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreArn"
+        },
+        {
+          "description": "The Amazon Resource Name used in the creation of the data store."
+        }
+      ]
+    },
+    "DatastoreName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreName"
+        },
+        {
+          "description": "The user-generated name for the data store."
+        }
+      ]
+    },
+    "DatastoreStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreStatus"
+        },
+        {
+          "description": "The status of the data store."
+        }
+      ]
+    },
+    "CreatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time that a data store was created. "
+        }
+      ]
+    },
+    "DatastoreTypeVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FHIRVersion"
+        },
+        {
+          "description": "The FHIR version. Only R4 version data is supported."
+        }
+      ]
+    },
+    "DatastoreEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The AWS endpoint for the data store. Each data store will have it's own endpoint with data store ID in the endpoint URL."
+        }
+      ]
+    },
+    "SseConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SseConfiguration"
+        },
+        {
+          "description": " The server-side encryption key configuration for a customer provided encryption key (CMK). "
+        }
+      ]
+    },
+    "PreloadDataConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PreloadDataConfig"
+        },
+        {
+          "description": "The preloaded data configuration for the data store. Only data preloaded from Synthea is supported."
+        }
+      ]
+    },
+    "IdentityProviderConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IdentityProviderConfiguration"
+        },
+        {
+          "description": "The identity provider that you selected when you created the data store."
+        }
+      ]
+    }
+  },
+  "description": "Displays the properties of the data store, including the ID, ARN, name, and the status of the data store."
+}

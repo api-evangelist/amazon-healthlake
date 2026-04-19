@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/json-schema/healthlake-kms-encryption-config-schema.json",
+  "title": "KmsEncryptionConfig",
+  "type": "object",
+  "required": [
+    "CmkType"
+  ],
+  "properties": {
+    "CmkType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CmkType"
+        },
+        {
+          "description": " The type of customer-managed-key(CMK) used for encryption. The two types of supported CMKs are customer owned CMKs and AWS owned CMKs. "
+        }
+      ]
+    },
+    "KmsKeyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionKeyID"
+        },
+        {
+          "description": " The KMS encryption key id/alias used to encrypt the data store contents at rest. "
+        }
+      ]
+    }
+  },
+  "description": " The customer-managed-key(CMK) used when creating a data store. If a customer owned key is not specified, an AWS owned key will be used for encryption. "
+}
