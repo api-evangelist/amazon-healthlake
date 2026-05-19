@@ -1,0 +1,700 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon HealthLake
+  description: 'Amazon HealthLake. 13 operations. Lead operation: Amazon HealthLake Create FHIR Datastore. Self-contained
+    Naftiko capability covering one Amazon Healthlake business surface.'
+  tags:
+  - Amazon Healthlake
+  - Amazon HealthLake
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_HEALTHLAKE_API_KEY: AMAZON_HEALTHLAKE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-healthlake
+    baseUri: http://healthlake.{region}.amazonaws.com
+    description: Amazon HealthLake business capability. Self-contained, no shared references.
+    resources:
+    - name: '#X-Amz-Target=HealthLake.CreateFHIRDatastore'
+      path: /#X-Amz-Target=HealthLake.CreateFHIRDatastore
+      operations:
+      - name: createfhirdatastore
+        method: POST
+        description: Amazon HealthLake Create FHIR Datastore
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.DeleteFHIRDatastore'
+      path: /#X-Amz-Target=HealthLake.DeleteFHIRDatastore
+      operations:
+      - name: deletefhirdatastore
+        method: POST
+        description: Amazon HealthLake Delete FHIR Datastore
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.DescribeFHIRDatastore'
+      path: /#X-Amz-Target=HealthLake.DescribeFHIRDatastore
+      operations:
+      - name: describefhirdatastore
+        method: POST
+        description: Amazon HealthLake Describe FHIR Datastore
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.DescribeFHIRExportJob'
+      path: /#X-Amz-Target=HealthLake.DescribeFHIRExportJob
+      operations:
+      - name: describefhirexportjob
+        method: POST
+        description: Amazon HealthLake Describe FHIR Export Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.DescribeFHIRImportJob'
+      path: /#X-Amz-Target=HealthLake.DescribeFHIRImportJob
+      operations:
+      - name: describefhirimportjob
+        method: POST
+        description: Amazon HealthLake Describe FHIR Import Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.ListFHIRDatastores'
+      path: /#X-Amz-Target=HealthLake.ListFHIRDatastores
+      operations:
+      - name: listfhirdatastores
+        method: POST
+        description: Amazon HealthLake List FHIR Datastores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.ListFHIRExportJobs'
+      path: /#X-Amz-Target=HealthLake.ListFHIRExportJobs
+      operations:
+      - name: listfhirexportjobs
+        method: POST
+        description: Amazon HealthLake List FHIR Export Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.ListFHIRImportJobs'
+      path: /#X-Amz-Target=HealthLake.ListFHIRImportJobs
+      operations:
+      - name: listfhirimportjobs
+        method: POST
+        description: Amazon HealthLake List FHIR Import Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.ListTagsForResource'
+      path: /#X-Amz-Target=HealthLake.ListTagsForResource
+      operations:
+      - name: listtagsforresource
+        method: POST
+        description: Amazon HealthLake List Tags for Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.StartFHIRExportJob'
+      path: /#X-Amz-Target=HealthLake.StartFHIRExportJob
+      operations:
+      - name: startfhirexportjob
+        method: POST
+        description: Amazon HealthLake Start FHIR Export Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.StartFHIRImportJob'
+      path: /#X-Amz-Target=HealthLake.StartFHIRImportJob
+      operations:
+      - name: startfhirimportjob
+        method: POST
+        description: Amazon HealthLake Start FHIR Import Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.TagResource'
+      path: /#X-Amz-Target=HealthLake.TagResource
+      operations:
+      - name: tagresource
+        method: POST
+        description: Amazon HealthLake Tag Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#X-Amz-Target=HealthLake.UntagResource'
+      path: /#X-Amz-Target=HealthLake.UntagResource
+      operations:
+      - name: untagresource
+        method: POST
+        description: Amazon HealthLake Untag Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_HEALTHLAKE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-healthlake-rest
+    port: 8080
+    description: REST adapter for Amazon HealthLake. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/x-amz-target-healthlake-createfhirdatastore
+      name: x-amz-target-healthlake-createfhirdatastore
+      description: 'REST surface for #X-Amz-Target=HealthLake.CreateFHIRDatastore.'
+      operations:
+      - method: POST
+        name: createfhirdatastore
+        description: Amazon HealthLake Create FHIR Datastore
+        call: amazon-healthlake.createfhirdatastore
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-deletefhirdatastore
+      name: x-amz-target-healthlake-deletefhirdatastore
+      description: 'REST surface for #X-Amz-Target=HealthLake.DeleteFHIRDatastore.'
+      operations:
+      - method: POST
+        name: deletefhirdatastore
+        description: Amazon HealthLake Delete FHIR Datastore
+        call: amazon-healthlake.deletefhirdatastore
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-describefhirdatastore
+      name: x-amz-target-healthlake-describefhirdatastore
+      description: 'REST surface for #X-Amz-Target=HealthLake.DescribeFHIRDatastore.'
+      operations:
+      - method: POST
+        name: describefhirdatastore
+        description: Amazon HealthLake Describe FHIR Datastore
+        call: amazon-healthlake.describefhirdatastore
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-describefhirexportjob
+      name: x-amz-target-healthlake-describefhirexportjob
+      description: 'REST surface for #X-Amz-Target=HealthLake.DescribeFHIRExportJob.'
+      operations:
+      - method: POST
+        name: describefhirexportjob
+        description: Amazon HealthLake Describe FHIR Export Job
+        call: amazon-healthlake.describefhirexportjob
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-describefhirimportjob
+      name: x-amz-target-healthlake-describefhirimportjob
+      description: 'REST surface for #X-Amz-Target=HealthLake.DescribeFHIRImportJob.'
+      operations:
+      - method: POST
+        name: describefhirimportjob
+        description: Amazon HealthLake Describe FHIR Import Job
+        call: amazon-healthlake.describefhirimportjob
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-listfhirdatastores
+      name: x-amz-target-healthlake-listfhirdatastores
+      description: 'REST surface for #X-Amz-Target=HealthLake.ListFHIRDatastores.'
+      operations:
+      - method: POST
+        name: listfhirdatastores
+        description: Amazon HealthLake List FHIR Datastores
+        call: amazon-healthlake.listfhirdatastores
+        with:
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-listfhirexportjobs
+      name: x-amz-target-healthlake-listfhirexportjobs
+      description: 'REST surface for #X-Amz-Target=HealthLake.ListFHIRExportJobs.'
+      operations:
+      - method: POST
+        name: listfhirexportjobs
+        description: Amazon HealthLake List FHIR Export Jobs
+        call: amazon-healthlake.listfhirexportjobs
+        with:
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-listfhirimportjobs
+      name: x-amz-target-healthlake-listfhirimportjobs
+      description: 'REST surface for #X-Amz-Target=HealthLake.ListFHIRImportJobs.'
+      operations:
+      - method: POST
+        name: listfhirimportjobs
+        description: Amazon HealthLake List FHIR Import Jobs
+        call: amazon-healthlake.listfhirimportjobs
+        with:
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-listtagsforresource
+      name: x-amz-target-healthlake-listtagsforresource
+      description: 'REST surface for #X-Amz-Target=HealthLake.ListTagsForResource.'
+      operations:
+      - method: POST
+        name: listtagsforresource
+        description: Amazon HealthLake List Tags for Resource
+        call: amazon-healthlake.listtagsforresource
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-startfhirexportjob
+      name: x-amz-target-healthlake-startfhirexportjob
+      description: 'REST surface for #X-Amz-Target=HealthLake.StartFHIRExportJob.'
+      operations:
+      - method: POST
+        name: startfhirexportjob
+        description: Amazon HealthLake Start FHIR Export Job
+        call: amazon-healthlake.startfhirexportjob
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-startfhirimportjob
+      name: x-amz-target-healthlake-startfhirimportjob
+      description: 'REST surface for #X-Amz-Target=HealthLake.StartFHIRImportJob.'
+      operations:
+      - method: POST
+        name: startfhirimportjob
+        description: Amazon HealthLake Start FHIR Import Job
+        call: amazon-healthlake.startfhirimportjob
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-tagresource
+      name: x-amz-target-healthlake-tagresource
+      description: 'REST surface for #X-Amz-Target=HealthLake.TagResource.'
+      operations:
+      - method: POST
+        name: tagresource
+        description: Amazon HealthLake Tag Resource
+        call: amazon-healthlake.tagresource
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/x-amz-target-healthlake-untagresource
+      name: x-amz-target-healthlake-untagresource
+      description: 'REST surface for #X-Amz-Target=HealthLake.UntagResource.'
+      operations:
+      - method: POST
+        name: untagresource
+        description: Amazon HealthLake Untag Resource
+        call: amazon-healthlake.untagresource
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-healthlake-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon HealthLake. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: amazon-healthlake-create-fhir-datastore
+      description: Amazon HealthLake Create FHIR Datastore
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.createfhirdatastore
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-delete-fhir-datastore
+      description: Amazon HealthLake Delete FHIR Datastore
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.deletefhirdatastore
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-describe-fhir-datastore
+      description: Amazon HealthLake Describe FHIR Datastore
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.describefhirdatastore
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-describe-fhir-export
+      description: Amazon HealthLake Describe FHIR Export Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.describefhirexportjob
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-describe-fhir-import
+      description: Amazon HealthLake Describe FHIR Import Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.describefhirimportjob
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-list-fhir-datastores
+      description: Amazon HealthLake List FHIR Datastores
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.listfhirdatastores
+      with:
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-list-fhir-export
+      description: Amazon HealthLake List FHIR Export Jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.listfhirexportjobs
+      with:
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-list-fhir-import
+      description: Amazon HealthLake List FHIR Import Jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.listfhirimportjobs
+      with:
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-list-tags-resource
+      description: Amazon HealthLake List Tags for Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.listtagsforresource
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-start-fhir-export
+      description: Amazon HealthLake Start FHIR Export Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.startfhirexportjob
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-start-fhir-import
+      description: Amazon HealthLake Start FHIR Import Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.startfhirimportjob
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-tag-resource
+      description: Amazon HealthLake Tag Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.tagresource
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-healthlake-untag-resource
+      description: Amazon HealthLake Untag Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-healthlake.untagresource
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
