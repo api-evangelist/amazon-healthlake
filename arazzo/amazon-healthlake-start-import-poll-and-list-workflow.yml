@@ -1,0 +1,155 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthLake Start FHIR Import Job, Poll, and List
+  summary: Start a FHIR import job, poll it until COMPLETED, then list all import jobs.
+  description: >-
+    Begins an Amazon HealthLake FHIR import job that ingests FHIR data from an
+    S3 location into a data store, polls the import job until it reports
+    COMPLETED, and then lists all import jobs for the data store so the finished
+    job can be confirmed in the catalog. The start call returns the
+    AWS-generated job id, the describe call loops while the job is SUBMITTED or
+    IN_PROGRESS, and the list call enumerates the data store's import jobs.
+    Each step inlines its AWS JSON request body and the X-Amz-Target header that
+    selects the HealthLake operation.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthlakeApi
+  url: ../openapi/amazon-healthlake-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: start-import-poll-and-list
+  summary: Start a FHIR import job, wait for COMPLETED, then list import jobs.
+  description: >-
+    Calls StartFHIRImportJob, repeatedly describes the resulting import job
+    until its status is COMPLETED, and then lists import jobs for the data
+    store.
+  inputs:
+    type: object
+    required:
+    - DatastoreId
+    - InputS3Uri
+    - OutputS3Uri
+    - OutputKmsKeyId
+    - DataAccessRoleArn
+    - ClientToken
+    properties:
+      DatastoreId:
+        type: string
+        description: The AWS-generated data store ID to import data into.
+      InputS3Uri:
+        type: string
+        description: The S3 location of the FHIR data to be imported.
+      OutputS3Uri:
+        type: string
+        description: The S3 location used for the import job output.
+      OutputKmsKeyId:
+        type: string
+        description: The KMS key ID used to access the output S3 bucket.
+      DataAccessRoleArn:
+        type: string
+        description: The IAM role ARN that gives AWS HealthLake access to your input data.
+      ClientToken:
+        type: string
+        description: User provided token used for ensuring idempotency.
+      JobName:
+        type: string
+        description: The user generated name for the import job.
+      MaxResults:
+        type: string
+        description: Pagination limit for the list of import jobs.
+  steps:
+  - stepId: startImportJob
+    description: >-
+      Begin the FHIR import job. The response returns the AWS-generated job id,
+      job status, and the data store id.
+    operationId: StartFHIRImportJob
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.StartFHIRImportJob
+    requestBody:
+      contentType: application/json
+      payload:
+        JobName: $inputs.JobName
+        InputDataConfig:
+          S3Uri: $inputs.InputS3Uri
+        JobOutputDataConfig:
+          S3Configuration:
+            S3Uri: $inputs.OutputS3Uri
+            KmsKeyId: $inputs.OutputKmsKeyId
+        DatastoreId: $inputs.DatastoreId
+        DataAccessRoleArn: $inputs.DataAccessRoleArn
+        ClientToken: $inputs.ClientToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/JobId
+      jobStatus: $response.body#/JobStatus
+      datastoreId: $response.body#/DatastoreId
+  - stepId: pollImportJob
+    description: >-
+      Describe the import job and inspect its status. While the status is
+      SUBMITTED or IN_PROGRESS the step loops back to itself; once the status is
+      COMPLETED the flow proceeds to list import jobs.
+    operationId: DescribeFHIRImportJob
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.DescribeFHIRImportJob
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+        JobId: $steps.startImportJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobStatus: $response.body#/ImportJobProperties/JobStatus
+      importJobProperties: $response.body#/ImportJobProperties
+    onSuccess:
+    - name: importCompleted
+      type: goto
+      stepId: listImportJobs
+      criteria:
+      - context: $response.body
+        condition: $.ImportJobProperties.JobStatus == "COMPLETED"
+        type: jsonpath
+    - name: importStillSubmitted
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.ImportJobProperties.JobStatus == "SUBMITTED"
+        type: jsonpath
+    - name: importStillRunning
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.ImportJobProperties.JobStatus == "IN_PROGRESS"
+        type: jsonpath
+  - stepId: listImportJobs
+    description: >-
+      List all FHIR import jobs for the data store so the completed job can be
+      confirmed in the catalog.
+    operationId: ListFHIRImportJobs
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.ListFHIRImportJobs
+    - name: MaxResults
+      in: query
+      value: $inputs.MaxResults
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      importJobPropertiesList: $response.body#/ImportJobPropertiesList
+      nextToken: $response.body#/NextToken
+  outputs:
+    jobId: $steps.startImportJob.outputs.jobId
+    jobStatus: $steps.pollImportJob.outputs.jobStatus
+    importJobPropertiesList: $steps.listImportJobs.outputs.importJobPropertiesList

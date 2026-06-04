@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthLake Create FHIR Data Store and Wait Until Active
+  summary: Create a FHIR data store and poll its status until it becomes ACTIVE.
+  description: >-
+    Provisions a new Amazon HealthLake FHIR data store and then polls the data
+    store's properties until its status transitions from CREATING to ACTIVE.
+    The create call returns the AWS-generated data store id, and the describe
+    call is re-issued on that id, branching back to itself while the data store
+    is still CREATING and ending once it reports ACTIVE. Every step spells out
+    its AWS JSON request inline, including the X-Amz-Target header that selects
+    the HealthLake operation, so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthlakeApi
+  url: ../openapi/amazon-healthlake-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: create-fhir-datastore-and-wait-active
+  summary: Create a FHIR data store and wait for it to reach ACTIVE status.
+  description: >-
+    Calls CreateFHIRDatastore with the supplied name and FHIR version, then
+    repeatedly describes the resulting data store until its status is ACTIVE.
+  inputs:
+    type: object
+    required:
+    - DatastoreName
+    - DatastoreTypeVersion
+    properties:
+      DatastoreName:
+        type: string
+        description: The user generated name for the data store.
+      DatastoreTypeVersion:
+        type: string
+        description: The FHIR version of the data store. The only supported version is R4.
+        enum:
+        - R4
+      PreloadDataType:
+        type: string
+        description: Optional preloaded data type. Only SYNTHEA is supported.
+        enum:
+        - SYNTHEA
+      ClientToken:
+        type: string
+        description: Optional user provided token used for ensuring idempotency.
+  steps:
+  - stepId: createDatastore
+    description: >-
+      Create the FHIR data store. The response returns the AWS-generated data
+      store id, ARN, status, and endpoint.
+    operationId: CreateFHIRDatastore
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.CreateFHIRDatastore
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreName: $inputs.DatastoreName
+        DatastoreTypeVersion: $inputs.DatastoreTypeVersion
+        ClientToken: $inputs.ClientToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreId: $response.body#/DatastoreId
+      datastoreArn: $response.body#/DatastoreArn
+      datastoreStatus: $response.body#/DatastoreStatus
+      datastoreEndpoint: $response.body#/DatastoreEndpoint
+  - stepId: pollDatastore
+    description: >-
+      Describe the data store and inspect its status. While the status is
+      CREATING the step loops back to itself; once the status is ACTIVE the
+      workflow ends.
+    operationId: DescribeFHIRDatastore
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.DescribeFHIRDatastore
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $steps.createDatastore.outputs.datastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreStatus: $response.body#/DatastoreProperties/DatastoreStatus
+      datastoreProperties: $response.body#/DatastoreProperties
+    onSuccess:
+    - name: datastoreActive
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.DatastoreProperties.DatastoreStatus == "ACTIVE"
+        type: jsonpath
+    - name: datastoreStillCreating
+      type: goto
+      stepId: pollDatastore
+      criteria:
+      - context: $response.body
+        condition: $.DatastoreProperties.DatastoreStatus == "CREATING"
+        type: jsonpath
+  outputs:
+    datastoreId: $steps.createDatastore.outputs.datastoreId
+    datastoreArn: $steps.createDatastore.outputs.datastoreArn
+    datastoreStatus: $steps.pollDatastore.outputs.datastoreStatus
+    datastoreEndpoint: $steps.createDatastore.outputs.datastoreEndpoint

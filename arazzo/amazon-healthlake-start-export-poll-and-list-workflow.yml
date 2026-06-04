@@ -1,0 +1,149 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthLake Start FHIR Export Job, Poll, and List
+  summary: Start a FHIR export job, poll it until COMPLETED, then list all export jobs.
+  description: >-
+    Begins an Amazon HealthLake FHIR export job that writes FHIR data from a
+    data store to an S3 location, polls the export job until it reports
+    COMPLETED, and then lists all export jobs for the data store to confirm the
+    finished job appears in the catalog. The start call returns the
+    AWS-generated job id, the describe call loops while the job is SUBMITTED or
+    IN_PROGRESS, and the list call enumerates the data store's export jobs.
+    Each step inlines its AWS JSON request body and the X-Amz-Target header that
+    selects the HealthLake operation.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthlakeApi
+  url: ../openapi/amazon-healthlake-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: start-export-poll-and-list
+  summary: Start a FHIR export job, wait for COMPLETED, then list export jobs.
+  description: >-
+    Calls StartFHIRExportJob, repeatedly describes the resulting export job
+    until its status is COMPLETED, and then lists export jobs for the data
+    store.
+  inputs:
+    type: object
+    required:
+    - DatastoreId
+    - OutputS3Uri
+    - OutputKmsKeyId
+    - DataAccessRoleArn
+    - ClientToken
+    properties:
+      DatastoreId:
+        type: string
+        description: The AWS-generated data store ID to export data from.
+      OutputS3Uri:
+        type: string
+        description: The S3 location used for the export job output.
+      OutputKmsKeyId:
+        type: string
+        description: The KMS key ID used to access the output S3 bucket.
+      DataAccessRoleArn:
+        type: string
+        description: The IAM role ARN used during the initiation of the job.
+      ClientToken:
+        type: string
+        description: User provided token used for ensuring idempotency.
+      JobName:
+        type: string
+        description: The user generated name for the export job.
+      MaxResults:
+        type: string
+        description: Pagination limit for the list of export jobs.
+  steps:
+  - stepId: startExportJob
+    description: >-
+      Begin the FHIR export job. The response returns the AWS-generated job id,
+      job status, and the data store id.
+    operationId: StartFHIRExportJob
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.StartFHIRExportJob
+    requestBody:
+      contentType: application/json
+      payload:
+        JobName: $inputs.JobName
+        OutputDataConfig:
+          S3Configuration:
+            S3Uri: $inputs.OutputS3Uri
+            KmsKeyId: $inputs.OutputKmsKeyId
+        DatastoreId: $inputs.DatastoreId
+        DataAccessRoleArn: $inputs.DataAccessRoleArn
+        ClientToken: $inputs.ClientToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/JobId
+      jobStatus: $response.body#/JobStatus
+      datastoreId: $response.body#/DatastoreId
+  - stepId: pollExportJob
+    description: >-
+      Describe the export job and inspect its status. While the status is
+      SUBMITTED or IN_PROGRESS the step loops back to itself; once the status is
+      COMPLETED the flow proceeds to list export jobs.
+    operationId: DescribeFHIRExportJob
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.DescribeFHIRExportJob
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+        JobId: $steps.startExportJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobStatus: $response.body#/ExportJobProperties/JobStatus
+      exportJobProperties: $response.body#/ExportJobProperties
+    onSuccess:
+    - name: exportCompleted
+      type: goto
+      stepId: listExportJobs
+      criteria:
+      - context: $response.body
+        condition: $.ExportJobProperties.JobStatus == "COMPLETED"
+        type: jsonpath
+    - name: exportStillSubmitted
+      type: goto
+      stepId: pollExportJob
+      criteria:
+      - context: $response.body
+        condition: $.ExportJobProperties.JobStatus == "SUBMITTED"
+        type: jsonpath
+    - name: exportStillRunning
+      type: goto
+      stepId: pollExportJob
+      criteria:
+      - context: $response.body
+        condition: $.ExportJobProperties.JobStatus == "IN_PROGRESS"
+        type: jsonpath
+  - stepId: listExportJobs
+    description: >-
+      List all FHIR export jobs for the data store so the completed job can be
+      confirmed in the catalog.
+    operationId: ListFHIRExportJobs
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.ListFHIRExportJobs
+    - name: MaxResults
+      in: query
+      value: $inputs.MaxResults
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      exportJobPropertiesList: $response.body#/ExportJobPropertiesList
+      nextToken: $response.body#/NextToken
+  outputs:
+    jobId: $steps.startExportJob.outputs.jobId
+    jobStatus: $steps.pollExportJob.outputs.jobStatus
+    exportJobPropertiesList: $steps.listExportJobs.outputs.exportJobPropertiesList

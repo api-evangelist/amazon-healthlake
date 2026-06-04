@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthLake Delete FHIR Data Store and Confirm Removal
+  summary: Delete a FHIR data store and poll its status until it reports DELETED.
+  description: >-
+    Requests deletion of an Amazon HealthLake FHIR data store and then polls the
+    data store's properties until its status transitions through DELETING to
+    DELETED. The delete call acknowledges the request and the describe call is
+    re-issued on the same data store id, looping while the data store is still
+    DELETING and ending once it reports DELETED. Each step inlines its AWS JSON
+    request body and the X-Amz-Target header that selects the HealthLake
+    operation so the flow can be read and executed directly.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthlakeApi
+  url: ../openapi/amazon-healthlake-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: delete-fhir-datastore-and-confirm
+  summary: Delete a FHIR data store and wait until it reports DELETED.
+  description: >-
+    Calls DeleteFHIRDatastore for the supplied data store id, then repeatedly
+    describes the data store until its status is DELETED.
+  inputs:
+    type: object
+    required:
+    - DatastoreId
+    properties:
+      DatastoreId:
+        type: string
+        description: The AWS-generated ID for the data store to be deleted.
+  steps:
+  - stepId: deleteDatastore
+    description: >-
+      Request deletion of the FHIR data store. The response echoes the data
+      store id, ARN, status, and endpoint.
+    operationId: DeleteFHIRDatastore
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.DeleteFHIRDatastore
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreId: $response.body#/DatastoreId
+      datastoreArn: $response.body#/DatastoreArn
+      datastoreStatus: $response.body#/DatastoreStatus
+  - stepId: pollDatastore
+    description: >-
+      Describe the data store and inspect its status. While the status is
+      DELETING the step loops back to itself; once the status is DELETED the
+      workflow ends.
+    operationId: DescribeFHIRDatastore
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.DescribeFHIRDatastore
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreStatus: $response.body#/DatastoreProperties/DatastoreStatus
+    onSuccess:
+    - name: datastoreDeleted
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.DatastoreProperties.DatastoreStatus == "DELETED"
+        type: jsonpath
+    - name: datastoreStillDeleting
+      type: goto
+      stepId: pollDatastore
+      criteria:
+      - context: $response.body
+        condition: $.DatastoreProperties.DatastoreStatus == "DELETING"
+        type: jsonpath
+  outputs:
+    datastoreId: $steps.deleteDatastore.outputs.datastoreId
+    datastoreArn: $steps.deleteDatastore.outputs.datastoreArn
+    datastoreStatus: $steps.pollDatastore.outputs.datastoreStatus

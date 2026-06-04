@@ -51,6 +51,30 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-healthlake.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/amazon-healthlake-create-fhir-datastore-and-wait-active-workflow.yml
+    name: Amazon HealthLake Create FHIR Data Store and Wait Until Active
+    summary: Create a FHIR data store and poll its status until it becomes ACTIVE.
+  - url: arazzo/amazon-healthlake-delete-fhir-datastore-and-confirm-workflow.yml
+    name: Amazon HealthLake Delete FHIR Data Store and Confirm Removal
+    summary: Delete a FHIR data store and poll its status until it reports DELETED.
+  - url: arazzo/amazon-healthlake-provision-datastore-and-export-workflow.yml
+    name: Amazon HealthLake Provision FHIR Data Store and Export Data
+    summary: Create a FHIR data store, wait until ACTIVE, then export FHIR data and wait until COMPLETED.
+  - url: arazzo/amazon-healthlake-provision-datastore-and-import-workflow.yml
+    name: Amazon HealthLake Provision FHIR Data Store and Import Data
+    summary: Create a FHIR data store, wait until ACTIVE, then import FHIR data and wait until COMPLETED.
+  - url: arazzo/amazon-healthlake-start-export-poll-and-list-workflow.yml
+    name: Amazon HealthLake Start FHIR Export Job, Poll, and List
+    summary: Start a FHIR export job, poll it until COMPLETED, then list all export jobs.
+  - url: arazzo/amazon-healthlake-start-import-and-wait-completed-workflow.yml
+    name: Amazon HealthLake Start FHIR Import Job and Wait Until Completed
+    summary: Start a FHIR import job and poll its status until it reaches COMPLETED.
+  - url: arazzo/amazon-healthlake-start-import-poll-and-list-workflow.yml
+    name: Amazon HealthLake Start FHIR Import Job, Poll, and List
+    summary: Start a FHIR import job, poll it until COMPLETED, then list all import jobs.
 - type: Portal
   url: https://aws.amazon.com/healthlake/
 - type: Documentation

@@ -1,0 +1,129 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthLake Start FHIR Import Job and Wait Until Completed
+  summary: Start a FHIR import job and poll its status until it reaches COMPLETED.
+  description: >-
+    Begins an Amazon HealthLake FHIR import job that ingests FHIR data from an
+    S3 location into a data store, then polls the import job until it reports
+    COMPLETED. The start call returns the AWS-generated job id and the describe
+    call is re-issued on that id, looping while the job is SUBMITTED or
+    IN_PROGRESS and ending when the job has COMPLETED. Each step inlines its
+    AWS JSON request body and the X-Amz-Target header that selects the
+    HealthLake operation so the flow can be executed directly.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthlakeApi
+  url: ../openapi/amazon-healthlake-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: start-import-and-wait-completed
+  summary: Start a FHIR import job and wait for it to reach COMPLETED status.
+  description: >-
+    Calls StartFHIRImportJob with the supplied S3 input, output, data store id,
+    and IAM role, then repeatedly describes the resulting import job until its
+    status is COMPLETED.
+  inputs:
+    type: object
+    required:
+    - DatastoreId
+    - InputS3Uri
+    - OutputS3Uri
+    - OutputKmsKeyId
+    - DataAccessRoleArn
+    - ClientToken
+    properties:
+      DatastoreId:
+        type: string
+        description: The AWS-generated data store ID to import data into.
+      InputS3Uri:
+        type: string
+        description: The S3 location of the FHIR data to be imported.
+      OutputS3Uri:
+        type: string
+        description: The S3 location used for the import job output.
+      OutputKmsKeyId:
+        type: string
+        description: The KMS key ID used to access the output S3 bucket.
+      DataAccessRoleArn:
+        type: string
+        description: The IAM role ARN that gives AWS HealthLake access to your input data.
+      ClientToken:
+        type: string
+        description: User provided token used for ensuring idempotency.
+      JobName:
+        type: string
+        description: The user generated name for the import job.
+  steps:
+  - stepId: startImportJob
+    description: >-
+      Begin the FHIR import job. The response returns the AWS-generated job id,
+      job status, and the data store id.
+    operationId: StartFHIRImportJob
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.StartFHIRImportJob
+    requestBody:
+      contentType: application/json
+      payload:
+        JobName: $inputs.JobName
+        InputDataConfig:
+          S3Uri: $inputs.InputS3Uri
+        JobOutputDataConfig:
+          S3Configuration:
+            S3Uri: $inputs.OutputS3Uri
+            KmsKeyId: $inputs.OutputKmsKeyId
+        DatastoreId: $inputs.DatastoreId
+        DataAccessRoleArn: $inputs.DataAccessRoleArn
+        ClientToken: $inputs.ClientToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/JobId
+      jobStatus: $response.body#/JobStatus
+      datastoreId: $response.body#/DatastoreId
+  - stepId: pollImportJob
+    description: >-
+      Describe the import job and inspect its status. While the status is
+      SUBMITTED or IN_PROGRESS the step loops back to itself; once the status is
+      COMPLETED the workflow ends.
+    operationId: DescribeFHIRImportJob
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: HealthLake.DescribeFHIRImportJob
+    requestBody:
+      contentType: application/json
+      payload:
+        DatastoreId: $inputs.DatastoreId
+        JobId: $steps.startImportJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobStatus: $response.body#/ImportJobProperties/JobStatus
+      importJobProperties: $response.body#/ImportJobProperties
+    onSuccess:
+    - name: importCompleted
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.ImportJobProperties.JobStatus == "COMPLETED"
+        type: jsonpath
+    - name: importStillSubmitted
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.ImportJobProperties.JobStatus == "SUBMITTED"
+        type: jsonpath
+    - name: importStillRunning
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.ImportJobProperties.JobStatus == "IN_PROGRESS"
+        type: jsonpath
+  outputs:
+    jobId: $steps.startImportJob.outputs.jobId
+    jobStatus: $steps.pollImportJob.outputs.jobStatus
+    importJobProperties: $steps.pollImportJob.outputs.importJobProperties
