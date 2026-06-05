@@ -51,6 +51,8 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-healthlake.yaml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-healthlake/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:
