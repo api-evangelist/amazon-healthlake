@@ -1,55 +1,120 @@
+# amazon-healthlake — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 50% of servers already https (warn)
+#   - query-params-casing: pascal @ 100% (n=6)
+#   - operationid-casing: pascal @ 100% (n=13)
+#   - schema-names-casing: pascal @ 100% (n=76)
+#   - schema-properties-casing: pascal @ 100% (n=117)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - merge: kept 8 existing, added 6 measured, upgraded 0
+#   - added: servers-https-only, query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   healthlake-operation-summary:
     description: All operations must have a summary
     severity: error
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: summary
       function: truthy
   healthlake-operation-id:
     description: All operations must have an operationId
     severity: error
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
   healthlake-operation-tags:
     description: All operations should have tags
     severity: warn
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: tags
       function: truthy
   healthlake-response-200:
     description: All operations should have a 200 response
     severity: warn
-    given: "$.paths.*[get,post,put,patch,delete].responses"
+    given: $.paths.*[get,post,put,patch,delete].responses
     then:
-      field: "200"
+      field: '200'
       function: truthy
   healthlake-schema-description:
     description: Schema components should have descriptions
     severity: info
-    given: "$.components.schemas.*"
+    given: $.components.schemas.*
     then:
       field: description
       function: truthy
   healthlake-fhir-datastore:
     description: FHIR datastore operations should follow naming conventions
     severity: info
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
   healthlake-hipaa-security:
     description: HIPAA-eligible service must document security requirements
     severity: error
-    given: "$.components.securitySchemes"
+    given: $.components.securitySchemes
     then:
       function: truthy
   healthlake-job-operations:
     description: Job operations should have consistent naming patterns
     severity: info
-    given: "$.paths.*[get,post,put,patch,delete][?(@property == 'operationId' && @.match('Job'))]"
+    given: $.paths.*[get,post,put,patch,delete][?(@property == 'operationId' && @.match('Job'))]
+    then:
+      function: truthy
+  servers-https-only:
+    description: Server URLs must use HTTPS.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: ^https://
+  query-params-casing:
+    description: Query parameters should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: pascal
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
     then:
       function: truthy
