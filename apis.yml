@@ -51,6 +51,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/amazon-healthlake.yaml
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-healthlake-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-healthlake-trust-center.yml
   - type: VulnerabilityDisclosure
