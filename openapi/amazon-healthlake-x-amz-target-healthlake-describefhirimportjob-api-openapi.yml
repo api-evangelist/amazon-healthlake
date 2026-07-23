@@ -1,0 +1,392 @@
+openapi: 3.0.0
+info:
+  version: '2017-07-01'
+  x-release: v4
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.DescribeFHIRImportJob API'
+  description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: healthlake
+  x-aws-signingName: healthlake
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://healthlake.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The HealthLake multi-region endpoint
+- url: https://healthlake.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The HealthLake multi-region endpoint
+- url: http://healthlake.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The HealthLake endpoint for China (Beijing) and China (Ningxia)
+- url: https://healthlake.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The HealthLake endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: '#X Amz Target=HealthLake.DescribeFHIRImportJob'
+paths:
+  /#X-Amz-Target=HealthLake.DescribeFHIRImportJob:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: DescribeFHIRImportJob
+      description: 'Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job. '
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeFHIRImportJobResponse'
+        '480':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '481':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '482':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+        '483':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeFHIRImportJobRequest'
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - HealthLake.DescribeFHIRImportJob
+      summary: Amazon HealthLake Describe FHIR Import Job
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - '#X Amz Target=HealthLake.DescribeFHIRImportJob'
+components:
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+  schemas:
+    OutputDataConfig:
+      type: object
+      properties:
+        S3Configuration:
+          allOf:
+          - $ref: '#/components/schemas/S3Configuration'
+          - description: ' The output data configuration that was supplied when the export job was created. '
+      description: The output data configuration that was supplied when the export job was created.
+    IamRoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
+    InputDataConfig:
+      type: object
+      properties:
+        S3Uri:
+          allOf:
+          - $ref: '#/components/schemas/S3Uri'
+          - description: 'The S3Uri is the user specified S3 location of the FHIR data to be imported into AWS HealthLake. '
+      description: ' The input properties for an import job.'
+    EncryptionKeyID:
+      type: string
+      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
+      minLength: 1
+      maxLength: 400
+    DescribeFHIRImportJobResponse:
+      type: object
+      required:
+      - ImportJobProperties
+      properties:
+        ImportJobProperties:
+          allOf:
+          - $ref: '#/components/schemas/ImportJobProperties'
+          - description: The properties of the Import job request, including the ID, ARN, name, and the status of the job.
+    S3Configuration:
+      type: object
+      required:
+      - S3Uri
+      - KmsKeyId
+      properties:
+        S3Uri:
+          allOf:
+          - $ref: '#/components/schemas/S3Uri'
+          - description: ' The S3Uri is the user specified S3 location of the FHIR data to be imported into AWS HealthLake. '
+        KmsKeyId:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionKeyID'
+          - description: ' The KMS key ID used to access the S3 bucket. '
+      description: ' The configuration of the S3 bucket for either an import or export job. This includes assigning permissions for access. '
+    JobName:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 64
+    DescribeFHIRImportJobRequest:
+      type: object
+      required:
+      - DatastoreId
+      - JobId
+      title: DescribeFHIRImportJobRequest
+      properties:
+        DatastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The AWS-generated ID of the data store.
+        JobId:
+          allOf:
+          - $ref: '#/components/schemas/JobId'
+          - description: The AWS-generated job ID.
+    ImportJobProperties:
+      type: object
+      required:
+      - JobId
+      - JobStatus
+      - SubmitTime
+      - DatastoreId
+      - InputDataConfig
+      properties:
+        JobId:
+          allOf:
+          - $ref: '#/components/schemas/JobId'
+          - description: The AWS-generated id number for the Import job.
+        JobName:
+          allOf:
+          - $ref: '#/components/schemas/JobName'
+          - description: The user-generated name for an Import job.
+        JobStatus:
+          allOf:
+          - $ref: '#/components/schemas/JobStatus'
+          - description: The job status for an Import job. Possible statuses are SUBMITTED, IN_PROGRESS, COMPLETED_WITH_ERRORS, COMPLETED, FAILED.
+        SubmitTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The time that the Import job was submitted for processing.
+        EndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The time that the Import job was completed.
+        DatastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: 'The datastore id used when the Import job was created. '
+        InputDataConfig:
+          allOf:
+          - $ref: '#/components/schemas/InputDataConfig'
+          - description: The input data configuration that was supplied when the Import job was created.
+        JobOutputDataConfig:
+          $ref: '#/components/schemas/OutputDataConfig'
+        DataAccessRoleArn:
+          allOf:
+          - $ref: '#/components/schemas/IamRoleArn'
+          - description: The Amazon Resource Name (ARN) that gives AWS HealthLake access to your input data.
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/Message'
+          - description: 'An explanation of any errors that may have occurred during the FHIR import job. '
+      description: Displays the properties of the import job, including the ID, Arn, Name, and the status of the data store.
+    JobId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    S3Uri:
+      type: string
+      pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
+      maxLength: 1024
+    Message:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 2048
+    ResourceNotFoundException: {}
+    ThrottlingException: {}
+    DatastoreId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    ValidationException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    JobStatus:
+      type: string
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED_WITH_ERRORS
+      - COMPLETED
+      - FAILED
+      - CANCEL_SUBMITTED
+      - CANCEL_IN_PROGRESS
+      - CANCEL_COMPLETED
+      - CANCEL_FAILED
+    InternalServerException: {}
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/healthlake/
+x-hasEquivalentPaths: true

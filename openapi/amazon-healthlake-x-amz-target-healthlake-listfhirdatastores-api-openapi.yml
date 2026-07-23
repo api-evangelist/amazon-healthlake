@@ -1,0 +1,471 @@
+openapi: 3.0.0
+info:
+  version: '2017-07-01'
+  x-release: v4
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.ListFHIRDatastores API'
+  description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: healthlake
+  x-aws-signingName: healthlake
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://healthlake.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The HealthLake multi-region endpoint
+- url: https://healthlake.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The HealthLake multi-region endpoint
+- url: http://healthlake.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The HealthLake endpoint for China (Beijing) and China (Ningxia)
+- url: https://healthlake.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The HealthLake endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: '#X Amz Target=HealthLake.ListFHIRDatastores'
+paths:
+  /#X-Amz-Target=HealthLake.ListFHIRDatastores:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: ListFHIRDatastores
+      description: Lists all FHIR data stores that are in the user’s account, regardless of data store status.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFHIRDatastoresResponse'
+        '480':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '481':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+        '482':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListFHIRDatastoresRequest'
+      parameters:
+      - name: MaxResults
+        in: query
+        schema:
+          type: string
+        description: Pagination limit
+        required: false
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - HealthLake.ListFHIRDatastores
+      summary: Amazon HealthLake List FHIR Datastores
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - '#X Amz Target=HealthLake.ListFHIRDatastores'
+components:
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+  schemas:
+    IdentityProviderConfiguration:
+      type: object
+      required:
+      - AuthorizationStrategy
+      properties:
+        AuthorizationStrategy:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizationStrategy'
+          - description: The authorization strategy that you selected when you created the data store.
+        FineGrainedAuthorizationEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: If you enabled fine-grained authorization when you created the data store.
+        Metadata:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationMetadata'
+          - description: '<p>The JSON metadata elements that you want to use in your identity provider configuration. Required elements are listed based on the launch specification of the SMART application. For more information on all possible elements, see <a href="https://build.fhir.org/ig/HL7/smart-app-launch/conformance.html#metadata">Metadata</a> in SMART''s App Launch specification.</p> <p> <code>authorization_endpoint</code>: The URL to the OAuth2 authorization endpoint.</p> <p> <code>grant_types_supported</code>: An array of grant types that are supported at the token endpoint. You must provide at least one grant type option. Valid options are <code>authorization_code</code> and <code>client_credentials</code>.</p> <p> <code>token_endpoint</code>: The URL to the OAuth2 token endpoint.</p> <p> <code>capabilities</code>: An array of strings of the SMART capabilities that the authorization server supports.</p> <p> <code>code_challenge_methods_supported</code>: An array of strings of supported PKCE code challenge methods. You must include the <code>S256</code> method in the array of PKCE code challenge methods.</p>'
+        IdpLambdaArn:
+          allOf:
+          - $ref: '#/components/schemas/LambdaArn'
+          - description: The Amazon Resource Name (ARN) of the Lambda function that you want to use to decode the access token created by the authorization server.
+      description: The identity provider configuration that you gave when the data store was created.
+    DatastoreName:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 256
+    PreloadDataConfig:
+      type: object
+      required:
+      - PreloadDataType
+      properties:
+        PreloadDataType:
+          allOf:
+          - $ref: '#/components/schemas/PreloadDataType'
+          - description: The type of preloaded data. Only Synthea preloaded data is supported.
+      description: ' The input properties for the preloaded data store. Only data preloaded from Synthea is supported.'
+    DatastorePropertiesList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DatastoreProperties'
+    EncryptionKeyID:
+      type: string
+      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
+      minLength: 1
+      maxLength: 400
+    DatastoreStatus:
+      type: string
+      enum:
+      - CREATING
+      - ACTIVE
+      - DELETING
+      - DELETED
+    String:
+      type: string
+      pattern: '[\P{M}\p{M}]{0,10000}'
+      maxLength: 10000
+    InternalServerException: {}
+    ListFHIRDatastoresResponse:
+      type: object
+      required:
+      - DatastorePropertiesList
+      properties:
+        DatastorePropertiesList:
+          allOf:
+          - $ref: '#/components/schemas/DatastorePropertiesList'
+          - description: All properties associated with the listed data stores.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Pagination token that can be used to retrieve the next page of results.
+    NextToken:
+      type: string
+      pattern: \p{ASCII}{0,8192}
+      maxLength: 8192
+    ConfigurationMetadata:
+      type: string
+    MaxResultsInteger:
+      type: integer
+      minimum: 1
+      maximum: 500
+    LambdaArn:
+      type: string
+      pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
+      minLength: 49
+      maxLength: 256
+    FHIRVersion:
+      type: string
+      enum:
+      - R4
+    ListFHIRDatastoresRequest:
+      type: object
+      title: ListFHIRDatastoresRequest
+      properties:
+        Filter:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreFilter'
+          - description: Lists all filters associated with a FHIR data store request.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Fetches the next page of data stores when results are paginated.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/MaxResultsInteger'
+          - description: The maximum number of data stores returned in a single page of a ListFHIRDatastoresRequest call.
+    CmkType:
+      type: string
+      enum:
+      - CUSTOMER_MANAGED_KMS_KEY
+      - AWS_OWNED_KMS_KEY
+    DatastoreFilter:
+      type: object
+      properties:
+        DatastoreName:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreName'
+          - description: Allows the user to filter data store results by name.
+        DatastoreStatus:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreStatus'
+          - description: Allows the user to filter data store results by status.
+        CreatedBefore:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: 'A filter that allows the user to set cutoff dates for records. All data stores created before the specified date will be included in the results. '
+        CreatedAfter:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: A filter that allows the user to set cutoff dates for records. All data stores created after the specified date will be included in the results.
+      description: The filters applied to data store query.
+    Boolean:
+      type: boolean
+    ThrottlingException: {}
+    PreloadDataType:
+      type: string
+      enum:
+      - SYNTHEA
+    DatastoreArn:
+      type: string
+      pattern: ^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:[a-zA-Z0-9-]+:[0-9]{12}:datastore/.+?
+    SseConfiguration:
+      type: object
+      required:
+      - KmsEncryptionConfig
+      properties:
+        KmsEncryptionConfig:
+          allOf:
+          - $ref: '#/components/schemas/KmsEncryptionConfig'
+          - description: ' The KMS encryption configuration used to provide details for data encryption. '
+      description: ' The server-side encryption key configuration for a customer provided encryption key. '
+    DatastoreId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    KmsEncryptionConfig:
+      type: object
+      required:
+      - CmkType
+      properties:
+        CmkType:
+          allOf:
+          - $ref: '#/components/schemas/CmkType'
+          - description: ' The type of customer-managed-key(CMK) used for encryption. The two types of supported CMKs are customer owned CMKs and AWS owned CMKs. '
+        KmsKeyId:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionKeyID'
+          - description: ' The KMS encryption key id/alias used to encrypt the data store contents at rest. '
+      description: ' The customer-managed-key(CMK) used when creating a data store. If a customer owned key is not specified, an AWS owned key will be used for encryption. '
+    ValidationException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    DatastoreProperties:
+      type: object
+      required:
+      - DatastoreId
+      - DatastoreArn
+      - DatastoreStatus
+      - DatastoreTypeVersion
+      - DatastoreEndpoint
+      properties:
+        DatastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The AWS-generated ID number for the data store.
+        DatastoreArn:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreArn'
+          - description: The Amazon Resource Name used in the creation of the data store.
+        DatastoreName:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreName'
+          - description: The user-generated name for the data store.
+        DatastoreStatus:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreStatus'
+          - description: The status of the data store.
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: 'The time that a data store was created. '
+        DatastoreTypeVersion:
+          allOf:
+          - $ref: '#/components/schemas/FHIRVersion'
+          - description: The FHIR version. Only R4 version data is supported.
+        DatastoreEndpoint:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The AWS endpoint for the data store. Each data store will have it's own endpoint with data store ID in the endpoint URL.
+        SseConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/SseConfiguration'
+          - description: ' The server-side encryption key configuration for a customer provided encryption key (CMK). '
+        PreloadDataConfig:
+          allOf:
+          - $ref: '#/components/schemas/PreloadDataConfig'
+          - description: The preloaded data configuration for the data store. Only data preloaded from Synthea is supported.
+        IdentityProviderConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/IdentityProviderConfiguration'
+          - description: The identity provider that you selected when you created the data store.
+      description: Displays the properties of the data store, including the ID, ARN, name, and the status of the data store.
+    AuthorizationStrategy:
+      type: string
+      enum:
+      - SMART_ON_FHIR_V1
+      - AWS_AUTH
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/healthlake/
+x-hasEquivalentPaths: true
