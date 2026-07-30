@@ -4,7 +4,20 @@ description: Amazon HealthLake is a HIPAA-eligible service that gives healthcare
   pharmaceutical companies the ability to store, transform, query, and analyze health data at scale in the cloud. It uses
   the Fast Healthcare Interoperability Resources (FHIR) standard.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-healthlake.png
 tags:
 - AWS
 - FHIR
@@ -17,23 +30,379 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: amazon-healthlake:amazon-healthlake-api
-  name: Amazon HealthLake API
-  description: The Amazon HealthLake API provides programmatic access to create and manage FHIR datastores, import and export
-    health data, and run analytics on FHIR-formatted health records.
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore API'
+  description: >-
+    The #X Amz Target=HealthLake.CreateFHIRDatastore API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.createfhirdatastore.
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
-  - FHIR
-  - Health Data
-  - Healthcare
-  - HIPAA
-  - Datastores
+  - '#X Amz Target=HealthLake.CreateFHIRDatastore'
   properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.DeleteFHIRDatastore API'
+  description: >-
+    The #X Amz Target=HealthLake.DeleteFHIRDatastore API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.deletefhirdatastore.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.DeleteFHIRDatastore'
+  properties:
   - type: OpenAPI
-    url: openapi/amazon-healthlake-openapi.yaml
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRDatastore API'
+  description: >-
+    The #X Amz Target=HealthLake.DescribeFHIRDatastore API from Amazon HealthLake — 1 operation(s) for
+    #x amz target=healthlake.describefhirdatastore.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.DescribeFHIRDatastore'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRExportJob API'
+  description: >-
+    The #X Amz Target=HealthLake.DescribeFHIRExportJob API from Amazon HealthLake — 1 operation(s) for
+    #x amz target=healthlake.describefhirexportjob.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.DescribeFHIRExportJob'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRImportJob API'
+  description: >-
+    The #X Amz Target=HealthLake.DescribeFHIRImportJob API from Amazon HealthLake — 1 operation(s) for
+    #x amz target=healthlake.describefhirimportjob.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.DescribeFHIRImportJob'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRDatastores API'
+  description: >-
+    The #X Amz Target=HealthLake.ListFHIRDatastores API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.listfhirdatastores.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.ListFHIRDatastores'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRExportJobs API'
+  description: >-
+    The #X Amz Target=HealthLake.ListFHIRExportJobs API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.listfhirexportjobs.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.ListFHIRExportJobs'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRImportJobs API'
+  description: >-
+    The #X Amz Target=HealthLake.ListFHIRImportJobs API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.listfhirimportjobs.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.ListFHIRImportJobs'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.ListTagsForResource API'
+  description: >-
+    The #X Amz Target=HealthLake.ListTagsForResource API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.listtagsforresource.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.ListTagsForResource'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRExportJob API'
+  description: >-
+    The #X Amz Target=HealthLake.StartFHIRExportJob API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.startfhirexportjob.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.StartFHIRExportJob'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRImportJob API'
+  description: >-
+    The #X Amz Target=HealthLake.StartFHIRImportJob API from Amazon HealthLake — 1 operation(s) for #x
+    amz target=healthlake.startfhirimportjob.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.StartFHIRImportJob'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-tagresource-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.TagResource API'
+  description: >-
+    The #X Amz Target=HealthLake.TagResource API from Amazon HealthLake — 1 operation(s) for #x amz target=healthlake.tagresource.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.TagResource'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-tagresource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthlake/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthlake/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthlake/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/CommonParameters.html
+  - type: JSONSchema
+    url: json-schema/healthlake-create-fhir-datastore-request-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-healthlake-context.jsonld
+  - type: X-NaftikoCapability
+    url: capabilities/amazon-healthlake.yaml
+- aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-untagresource-api
+  name: 'Amazon HealthLake #X Amz Target=HealthLake.UntagResource API'
+  description: >-
+    The #X Amz Target=HealthLake.UntagResource API from Amazon HealthLake — 1 operation(s) for #x amz
+    target=healthlake.untagresource.
+  humanURL: https://aws.amazon.com/healthlake/
+  baseURL: https://healthlake.amazonaws.com
+  tags:
+  - '#X Amz Target=HealthLake.UntagResource'
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthlake-x-amz-target-healthlake-untagresource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthlake/latest/APIReference/Welcome.html
   - type: GettingStarted
     url: https://aws.amazon.com/healthlake/getting-started/
   - type: Pricing
