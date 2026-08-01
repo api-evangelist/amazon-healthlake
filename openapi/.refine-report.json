@@ -1,0 +1,38 @@
+{
+  "provider": "amazon-healthlake",
+  "sources": [
+    "amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-tagresource-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-untagresource-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-tagresource-api-openapi.yml",
+    "amazon-healthlake-x-amz-target-healthlake-untagresource-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

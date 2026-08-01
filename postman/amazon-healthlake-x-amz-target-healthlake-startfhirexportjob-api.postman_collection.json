@@ -1,0 +1,662 @@
+{
+  "info": {
+    "_postman_id": "18668c38-8441-4ee7-a2a2-7c1d662fb8ad",
+    "name": "Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.StartFHIRExportJob API",
+    "description": "AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:25:00.000Z",
+    "updatedAt": "2026-07-28T10:25:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-18668c38-8441-4ee7-a2a2-7c1d662fb8ad"
+  },
+  "item": [
+    {
+      "name": "#X-Amz-Target=HealthLake.StartFHIRExportJob",
+      "item": [
+        {
+          "name": "Amazon HealthLake Start FHIR Export Job",
+          "id": "3bb5689b-0581-4f70-8157-7e3cc3fa8efb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "HealthLake.StartFHIRExportJob"
+              },
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+            },
+            "description": "Begins a FHIR export job."
+          },
+          "response": [
+            {
+              "id": "2fafa63c-6218-4a11-b460-0c32cedb70ce",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "HealthLake.StartFHIRExportJob"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"JobId\": \"@+@-/\",\n  \"JobStatus\": \"SUBMITTED\",\n  \"DatastoreId\": \"Z/@\"\n}",
+              "createdAt": "2026-07-28T10:25:01.000Z",
+              "updatedAt": "2026-07-28T10:25:01.000Z",
+              "uid": "35240-2fafa63c-6218-4a11-b460-0c32cedb70ce"
+            },
+            {
+              "id": "3becfdd1-52d5-4dce-bb00-05d0a82ade88",
+              "name": "ValidationException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "HealthLake.StartFHIRExportJob"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:25:01.000Z",
+              "updatedAt": "2026-07-28T10:25:01.000Z",
+              "uid": "35240-3becfdd1-52d5-4dce-bb00-05d0a82ade88"
+            },
+            {
+              "id": "eab3bebf-c43e-4748-ac87-a41b86bb2e92",
+              "name": "ThrottlingException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "HealthLake.StartFHIRExportJob"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:25:01.000Z",
+              "updatedAt": "2026-07-28T10:25:01.000Z",
+              "uid": "35240-eab3bebf-c43e-4748-ac87-a41b86bb2e92"
+            },
+            {
+              "id": "52addd9d-f7c7-49cd-88da-7f561e954703",
+              "name": "AccessDeniedException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "HealthLake.StartFHIRExportJob"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:25:01.000Z",
+              "updatedAt": "2026-07-28T10:25:01.000Z",
+              "uid": "35240-52addd9d-f7c7-49cd-88da-7f561e954703"
+            },
+            {
+              "id": "14f68fc0-71b8-44e0-a16e-a208e2f899cc",
+              "name": "ResourceNotFoundException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "HealthLake.StartFHIRExportJob"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:25:01.000Z",
+              "updatedAt": "2026-07-28T10:25:01.000Z",
+              "uid": "35240-14f68fc0-71b8-44e0-a16e-a208e2f899cc"
+            },
+            {
+              "id": "56a40e96-f5db-45f5-a6ba-7cf42ccc8b06",
+              "name": "InternalServerException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "HealthLake.StartFHIRExportJob"
+                  },
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"OutputDataConfig\": {\n    \"S3Configuration\": {\n      \"S3Uri\": \"s3://p5sprvfdo5lbm3dhram..wk-uo7\",\n      \"KmsKeyId\": \"fv-lsurmxonb-8:alias/VHdR\"\n    }\n  },\n  \"DatastoreId\": \"}Z{=Zp\",\n  \"DataAccessRoleArn\": \"arn:aws:iam::405591666173:role/1/s?:WBiD>T\",\n  \"ClientToken\": \"72Mp4Nzx\",\n  \"JobName\": \"_-=={p-+pp\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#X-Amz-Target=HealthLake.StartFHIRExportJob",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "X-Amz-Target=HealthLake.StartFHIRExportJob"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:25:01.000Z",
+              "updatedAt": "2026-07-28T10:25:01.000Z",
+              "uid": "35240-56a40e96-f5db-45f5-a6ba-7cf42ccc8b06"
+            }
+          ],
+          "createdAt": "2026-07-28T10:25:01.000Z",
+          "updatedAt": "2026-07-28T10:25:01.000Z",
+          "uid": "35240-3bb5689b-0581-4f70-8157-7e3cc3fa8efb"
+        }
+      ],
+      "id": "0a78e019-4a2e-40f5-a426-af41d63e39e3",
+      "createdAt": "2026-07-28T10:25:01.000Z",
+      "updatedAt": "2026-07-28T10:25:01.000Z",
+      "uid": "35240-0a78e019-4a2e-40f5-a426-af41d63e39e3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://healthlake.{{region}}.amazonaws.com"
+    }
+  ]
+}
