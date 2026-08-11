@@ -58,8 +58,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DeleteFHIRDatastore API'
   description: >-
@@ -88,8 +86,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRDatastore API'
   description: >-
@@ -118,8 +114,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRExportJob API'
   description: >-
@@ -148,8 +142,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRImportJob API'
   description: >-
@@ -178,8 +170,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRDatastores API'
   description: >-
@@ -208,8 +198,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRExportJobs API'
   description: >-
@@ -238,8 +226,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRImportJobs API'
   description: >-
@@ -268,8 +254,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListTagsForResource API'
   description: >-
@@ -298,8 +282,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRExportJob API'
   description: >-
@@ -328,8 +310,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRImportJob API'
   description: >-
@@ -358,8 +338,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-tagresource-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.TagResource API'
   description: >-
@@ -387,8 +365,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-untagresource-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.UntagResource API'
   description: >-
@@ -417,8 +393,6 @@ apis:
     url: json-schema/healthlake-create-fhir-datastore-request-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthlake.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-healthlake-agentic-access.yml
