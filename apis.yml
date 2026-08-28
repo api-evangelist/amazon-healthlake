@@ -4,6 +4,18 @@ description: Amazon HealthLake is a HIPAA-eligible service that gives healthcare
   pharmaceutical companies the ability to store, transform, query, and analyze health data at scale in the cloud. It uses
   the Fast Healthcare Interoperability Resources (FHIR) standard.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
