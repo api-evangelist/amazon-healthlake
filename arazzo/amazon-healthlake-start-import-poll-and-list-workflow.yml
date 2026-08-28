@@ -13,8 +13,14 @@ info:
     selects the HealthLake operation.
   version: 1.0.0
 sourceDescriptions:
-- name: healthlakeApi
-  url: ../openapi/amazon-healthlake-openapi.yaml
+- name: xAmzTargetHealthlakeDescribefhirimportjobApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeListfhirimportjobsApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeStartfhirimportjobApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: start-import-poll-and-list

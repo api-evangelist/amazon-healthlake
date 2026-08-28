@@ -12,8 +12,11 @@ info:
     operation so the flow can be read and executed directly.
   version: 1.0.0
 sourceDescriptions:
-- name: healthlakeApi
-  url: ../openapi/amazon-healthlake-openapi.yaml
+- name: xAmzTargetHealthlakeDeletefhirdatastoreApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeDescribefhirdatastoreApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: delete-fhir-datastore-and-confirm

@@ -13,8 +13,11 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: healthlakeApi
-  url: ../openapi/amazon-healthlake-openapi.yaml
+- name: xAmzTargetHealthlakeCreatefhirdatastoreApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeDescribefhirdatastoreApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-fhir-datastore-and-wait-active

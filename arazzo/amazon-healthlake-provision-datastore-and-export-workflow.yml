@@ -13,8 +13,17 @@ info:
     X-Amz-Target header that selects the HealthLake operation.
   version: 1.0.0
 sourceDescriptions:
-- name: healthlakeApi
-  url: ../openapi/amazon-healthlake-openapi.yaml
+- name: xAmzTargetHealthlakeCreatefhirdatastoreApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeDescribefhirdatastoreApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeDescribefhirexportjobApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api-openapi.yml
+  type: openapi
+- name: xAmzTargetHealthlakeStartfhirexportjobApi
+  url: ../openapi/amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-datastore-and-export
