@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.DeleteFHIRDatastore API'
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.DeleteFHIRDatastore #X Amz Target=HealthLake.DeleteFHIRDatastore #X Amz Target=HealthLake.DeleteFHIRDatastore API'
   description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -190,64 +190,8 @@ paths:
       tags:
       - '#X Amz Target=HealthLake.DeleteFHIRDatastore'
 components:
-  parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    DatastoreStatus:
-      type: string
-      enum:
-      - CREATING
-      - ACTIVE
-      - DELETING
-      - DELETED
-    BoundedLengthString:
-      type: string
-      pattern: '[\P{M}\p{M}]{1,5000}'
-      minLength: 1
-      maxLength: 5000
-    AccessDeniedException: {}
-    ResourceNotFoundException: {}
+    ThrottlingException: {}
     DeleteFHIRDatastoreRequest:
       type: object
       required:
@@ -258,6 +202,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/DatastoreId'
           - description: ' The AWS-generated ID for the data store to be deleted.'
+    InternalServerException: {}
+    AccessDeniedException: {}
     DeleteFHIRDatastoreResponse:
       type: object
       required:
@@ -282,18 +228,72 @@ components:
           allOf:
           - $ref: '#/components/schemas/BoundedLengthString'
           - description: The AWS endpoint for the data store the user has requested to be deleted.
-    ConflictException: {}
     DatastoreArn:
       type: string
       pattern: ^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:[a-zA-Z0-9-]+:[0-9]{12}:datastore/.+?
-    ThrottlingException: {}
+    BoundedLengthString:
+      type: string
+      pattern: '[\P{M}\p{M}]{1,5000}'
+      minLength: 1
+      maxLength: 5000
+    ConflictException: {}
+    ValidationException: {}
     DatastoreId:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
       minLength: 1
       maxLength: 32
-    ValidationException: {}
-    InternalServerException: {}
+    ResourceNotFoundException: {}
+    DatastoreStatus:
+      type: string
+      enum:
+      - CREATING
+      - ACTIVE
+      - DELETING
+      - DELETED
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
