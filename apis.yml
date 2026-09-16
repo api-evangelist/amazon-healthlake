@@ -1,8 +1,8 @@
 aid: amazon-healthlake
 name: Amazon HealthLake
-description: Amazon HealthLake is a HIPAA-eligible service that gives healthcare providers, health insurance companies, and
-  pharmaceutical companies the ability to store, transform, query, and analyze health data at scale in the cloud. It uses
-  the Fast Healthcare Interoperability Resources (FHIR) standard.
+description: Amazon HealthLake is a HIPAA-eligible service that gives healthcare providers, health insurance
+  companies, and pharmaceutical companies the ability to store, transform, query, and analyze health data
+  at scale in the cloud. It uses the Fast Healthcare Interoperability Resources (FHIR) standard.
 type: Index
 deliveryModel:
   model: saas
@@ -40,14 +40,13 @@ tags:
 - Cloud Computing
 url: https://raw.githubusercontent.com/api-evangelist/amazon-healthlake/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore API'
-  description: >-
-    The #X Amz Target=HealthLake.CreateFHIRDatastore API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.createfhirdatastore.
+  description: 'The #X Amz Target=HealthLake.CreateFHIRDatastore API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.createfhirdatastore.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -73,9 +72,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DeleteFHIRDatastore API'
-  description: >-
-    The #X Amz Target=HealthLake.DeleteFHIRDatastore API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.deletefhirdatastore.
+  description: 'The #X Amz Target=HealthLake.DeleteFHIRDatastore API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.deletefhirdatastore.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -101,9 +99,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRDatastore API'
-  description: >-
-    The #X Amz Target=HealthLake.DescribeFHIRDatastore API from Amazon HealthLake — 1 operation(s) for
-    #x amz target=healthlake.describefhirdatastore.
+  description: 'The #X Amz Target=HealthLake.DescribeFHIRDatastore API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.describefhirdatastore.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -129,9 +126,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRExportJob API'
-  description: >-
-    The #X Amz Target=HealthLake.DescribeFHIRExportJob API from Amazon HealthLake — 1 operation(s) for
-    #x amz target=healthlake.describefhirexportjob.
+  description: 'The #X Amz Target=HealthLake.DescribeFHIRExportJob API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.describefhirexportjob.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -157,9 +153,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRImportJob API'
-  description: >-
-    The #X Amz Target=HealthLake.DescribeFHIRImportJob API from Amazon HealthLake — 1 operation(s) for
-    #x amz target=healthlake.describefhirimportjob.
+  description: 'The #X Amz Target=HealthLake.DescribeFHIRImportJob API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.describefhirimportjob.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -185,9 +180,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRDatastores API'
-  description: >-
-    The #X Amz Target=HealthLake.ListFHIRDatastores API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.listfhirdatastores.
+  description: 'The #X Amz Target=HealthLake.ListFHIRDatastores API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.listfhirdatastores.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -213,9 +207,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRExportJobs API'
-  description: >-
-    The #X Amz Target=HealthLake.ListFHIRExportJobs API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.listfhirexportjobs.
+  description: 'The #X Amz Target=HealthLake.ListFHIRExportJobs API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.listfhirexportjobs.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -241,9 +234,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListFHIRImportJobs API'
-  description: >-
-    The #X Amz Target=HealthLake.ListFHIRImportJobs API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.listfhirimportjobs.
+  description: 'The #X Amz Target=HealthLake.ListFHIRImportJobs API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.listfhirimportjobs.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -269,9 +261,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.ListTagsForResource API'
-  description: >-
-    The #X Amz Target=HealthLake.ListTagsForResource API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.listtagsforresource.
+  description: 'The #X Amz Target=HealthLake.ListTagsForResource API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.listtagsforresource.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -297,9 +288,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRExportJob API'
-  description: >-
-    The #X Amz Target=HealthLake.StartFHIRExportJob API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.startfhirexportjob.
+  description: 'The #X Amz Target=HealthLake.StartFHIRExportJob API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.startfhirexportjob.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -325,9 +315,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRImportJob API'
-  description: >-
-    The #X Amz Target=HealthLake.StartFHIRImportJob API from Amazon HealthLake — 1 operation(s) for #x
-    amz target=healthlake.startfhirimportjob.
+  description: 'The #X Amz Target=HealthLake.StartFHIRImportJob API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.startfhirimportjob.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -353,8 +342,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-tagresource-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.TagResource API'
-  description: >-
-    The #X Amz Target=HealthLake.TagResource API from Amazon HealthLake — 1 operation(s) for #x amz target=healthlake.tagresource.
+  description: 'The #X Amz Target=HealthLake.TagResource API from Amazon HealthLake — 1 operation(s) for
+    #x amz target=healthlake.tagresource.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -380,9 +369,8 @@ apis:
     url: json-ld/amazon-healthlake-context.jsonld
 - aid: amazon-healthlake:amazon-healthlake-x-amz-target-healthlake-untagresource-api
   name: 'Amazon HealthLake #X Amz Target=HealthLake.UntagResource API'
-  description: >-
-    The #X Amz Target=HealthLake.UntagResource API from Amazon HealthLake — 1 operation(s) for #x amz
-    target=healthlake.untagresource.
+  description: 'The #X Amz Target=HealthLake.UntagResource API from Amazon HealthLake — 1 operation(s)
+    for #x amz target=healthlake.untagresource.'
   humanURL: https://aws.amazon.com/healthlake/
   baseURL: https://healthlake.amazonaws.com
   tags:
@@ -407,113 +395,115 @@ apis:
   - type: JSONLD
     url: json-ld/amazon-healthlake-context.jsonld
 common:
-  - type: AgenticAccess
-    url: agentic-access/amazon-healthlake-agentic-access.yml
-  - type: TrustCenter
-    url: security/amazon-healthlake-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/amazon-healthlake-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/amazon-healthlake-domain-security.yml
-  - type: Authentication
-    url: authentication/amazon-healthlake-authentication.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/amazon-healthlake/overview
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-create-fhir-datastore-and-wait-active-workflow.yml
-    name: Amazon HealthLake Create FHIR Data Store and Wait Until Active
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-delete-fhir-datastore-and-confirm-workflow.yml
-    name: Amazon HealthLake Delete FHIR Data Store and Confirm Removal
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-provision-datastore-and-export-workflow.yml
-    name: Amazon HealthLake Provision FHIR Data Store and Export Data
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-provision-datastore-and-import-workflow.yml
-    name: Amazon HealthLake Provision FHIR Data Store and Import Data
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-start-export-poll-and-list-workflow.yml
-    name: Amazon HealthLake Start FHIR Export Job, Poll, and List
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-start-import-and-wait-completed-workflow.yml
-    name: Amazon HealthLake Start FHIR Import Job and Wait Until Completed
-  - type: Arazzo
-    url: arazzo/amazon-healthlake-start-import-poll-and-list-workflow.yml
-    name: Amazon HealthLake Start FHIR Import Job, Poll, and List
-  - type: Portal
-    url: https://aws.amazon.com/healthlake/
-  - type: Documentation
-    url: https://docs.aws.amazon.com/healthlake/
-  - type: TermsOfService
-    url: https://aws.amazon.com/service-terms/
-  - type: PrivacyPolicy
-    url: https://aws.amazon.com/privacy/
-  - type: Support
-    url: https://aws.amazon.com/premiumsupport/
-  - type: Blog
-    url: https://aws.amazon.com/blogs/industries/healthcare/
-  - type: GitHubOrganization
-    url: https://github.com/aws
-  - type: Console
-    url: https://console.aws.amazon.com/healthlake/
-  - type: Signup
-    url: https://portal.aws.amazon.com/billing/signup
-  - type: StatusPage
-    url: https://health.aws.amazon.com/health/status
-  - type: Contact
-    url: https://aws.amazon.com/contact-us/
-  - type: SDKs
-    url: https://aws.amazon.com/developer/tools/
-  - type: CLI
-    url: https://awscli.amazonaws.com/v2/documentation/api/latest/reference/healthlake/index.html
-  - type: Features
-    data:
-    - name: FHIR Compliance
-      description: Fully compliant with the FHIR R4 standard for healthcare data interoperability.
-    - name: HIPAA-Eligible
-      description: HIPAA-eligible service for storing and processing protected health information.
-    - name: Integrated Data Import
-      description: Bulk import FHIR-formatted health data from Amazon S3 with automated validation.
-    - name: Data Export
-      description: Export FHIR health data to Amazon S3 for analytics, archiving, or migration.
-    - name: Integrated Search
-      description: Query FHIR resources using standard FHIR search operations for clinical workflows.
-    - name: Automated De-identification
-      description: Built-in de-identification capabilities for removing PHI from health data.
-    - name: Analytics Integration
-      description: Integrated analytics with Amazon Comprehend Medical and other AWS analytics services.
-  - type: UseCases
-    data:
-    - name: Clinical Data Repository
-      description: Create a centralized FHIR-compliant repository for clinical data from multiple sources.
-    - name: Health Data Exchange
-      description: Enable interoperable health data exchange between healthcare providers and payers.
-    - name: Population Health Management
-      description: Analyze aggregated health data to identify trends and manage population health programs.
-    - name: AI-Powered Clinical Insights
-      description: Apply machine learning to FHIR data to generate clinical insights and predictions.
-    - name: Research Data Platform
-      description: Create de-identified research datasets from FHIR health records for clinical studies.
-  - type: Integrations
-    data:
-    - name: Amazon S3
-      description: Import and export FHIR health data using S3 as the data source and destination.
-    - name: AWS IAM
-      description: Control access to HealthLake resources using IAM roles and policies.
-    - name: Amazon CloudWatch
-      description: Monitor HealthLake operations and performance metrics through CloudWatch.
-    - name: Amazon Comprehend Medical
-      description: Extract medical entities from unstructured health data using Comprehend Medical.
-    - name: Amazon SageMaker
-      description: Apply SageMaker ML models to FHIR data for predictive health analytics.
-    - name: AWS Glue
-      description: Transform and catalog FHIR health data for analytics using AWS Glue.
-  - type: SpectralRules
-    url: rules/amazon-healthlake-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/amazon-healthlake-vocabulary.yaml
-  - type: Integrations
-    url: https://aws.amazon.com/marketplace
+- type: Website
+  url: https://amazon.com
+- type: AgenticAccess
+  url: agentic-access/amazon-healthlake-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-healthlake-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-healthlake-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-healthlake-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-healthlake-authentication.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-healthlake/overview
+- type: Arazzo
+  url: arazzo/amazon-healthlake-create-fhir-datastore-and-wait-active-workflow.yml
+  name: Amazon HealthLake Create FHIR Data Store and Wait Until Active
+- type: Arazzo
+  url: arazzo/amazon-healthlake-delete-fhir-datastore-and-confirm-workflow.yml
+  name: Amazon HealthLake Delete FHIR Data Store and Confirm Removal
+- type: Arazzo
+  url: arazzo/amazon-healthlake-provision-datastore-and-export-workflow.yml
+  name: Amazon HealthLake Provision FHIR Data Store and Export Data
+- type: Arazzo
+  url: arazzo/amazon-healthlake-provision-datastore-and-import-workflow.yml
+  name: Amazon HealthLake Provision FHIR Data Store and Import Data
+- type: Arazzo
+  url: arazzo/amazon-healthlake-start-export-poll-and-list-workflow.yml
+  name: Amazon HealthLake Start FHIR Export Job, Poll, and List
+- type: Arazzo
+  url: arazzo/amazon-healthlake-start-import-and-wait-completed-workflow.yml
+  name: Amazon HealthLake Start FHIR Import Job and Wait Until Completed
+- type: Arazzo
+  url: arazzo/amazon-healthlake-start-import-poll-and-list-workflow.yml
+  name: Amazon HealthLake Start FHIR Import Job, Poll, and List
+- type: Portal
+  url: https://aws.amazon.com/healthlake/
+- type: Documentation
+  url: https://docs.aws.amazon.com/healthlake/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
+- type: Support
+  url: https://aws.amazon.com/premiumsupport/
+- type: Blog
+  url: https://aws.amazon.com/blogs/industries/healthcare/
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: Console
+  url: https://console.aws.amazon.com/healthlake/
+- type: Signup
+  url: https://portal.aws.amazon.com/billing/signup
+- type: StatusPage
+  url: https://health.aws.amazon.com/health/status
+- type: Contact
+  url: https://aws.amazon.com/contact-us/
+- type: SDKs
+  url: https://aws.amazon.com/developer/tools/
+- type: CLI
+  url: https://awscli.amazonaws.com/v2/documentation/api/latest/reference/healthlake/index.html
+- type: Features
+  data:
+  - name: FHIR Compliance
+    description: Fully compliant with the FHIR R4 standard for healthcare data interoperability.
+  - name: HIPAA-Eligible
+    description: HIPAA-eligible service for storing and processing protected health information.
+  - name: Integrated Data Import
+    description: Bulk import FHIR-formatted health data from Amazon S3 with automated validation.
+  - name: Data Export
+    description: Export FHIR health data to Amazon S3 for analytics, archiving, or migration.
+  - name: Integrated Search
+    description: Query FHIR resources using standard FHIR search operations for clinical workflows.
+  - name: Automated De-identification
+    description: Built-in de-identification capabilities for removing PHI from health data.
+  - name: Analytics Integration
+    description: Integrated analytics with Amazon Comprehend Medical and other AWS analytics services.
+- type: UseCases
+  data:
+  - name: Clinical Data Repository
+    description: Create a centralized FHIR-compliant repository for clinical data from multiple sources.
+  - name: Health Data Exchange
+    description: Enable interoperable health data exchange between healthcare providers and payers.
+  - name: Population Health Management
+    description: Analyze aggregated health data to identify trends and manage population health programs.
+  - name: AI-Powered Clinical Insights
+    description: Apply machine learning to FHIR data to generate clinical insights and predictions.
+  - name: Research Data Platform
+    description: Create de-identified research datasets from FHIR health records for clinical studies.
+- type: Integrations
+  data:
+  - name: Amazon S3
+    description: Import and export FHIR health data using S3 as the data source and destination.
+  - name: AWS IAM
+    description: Control access to HealthLake resources using IAM roles and policies.
+  - name: Amazon CloudWatch
+    description: Monitor HealthLake operations and performance metrics through CloudWatch.
+  - name: Amazon Comprehend Medical
+    description: Extract medical entities from unstructured health data using Comprehend Medical.
+  - name: Amazon SageMaker
+    description: Apply SageMaker ML models to FHIR data for predictive health analytics.
+  - name: AWS Glue
+    description: Transform and catalog FHIR health data for analytics using AWS Glue.
+- type: SpectralRules
+  url: rules/amazon-healthlake-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-healthlake-vocabulary.yaml
+- type: Integrations
+  url: https://aws.amazon.com/marketplace
 integrations:
 - name: Sign in
 - name: Agent Mode
