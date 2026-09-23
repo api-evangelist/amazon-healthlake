@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2017-07-01'
   x-release: v4
-  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.StartFHIRImportJob #X Amz Target=HealthLake.StartFHIRImportJob #X Amz Target=HealthLake.StartFHIRImportJob API'
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.StartFHIRImportJo…'
   description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -184,10 +185,56 @@ paths:
       tags:
       - '#X Amz Target=HealthLake.StartFHIRImportJob'
 components:
+  parameters:
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     ThrottlingException: {}
-    InternalServerException: {}
-    AccessDeniedException: {}
+    IamRoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
     StartFHIRImportJobRequest:
       type: object
       required:
@@ -220,55 +267,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/ClientTokenString'
           - description: Optional user provided token used for ensuring idempotency.
-    OutputDataConfig:
-      type: object
-      properties:
-        S3Configuration:
-          allOf:
-          - $ref: '#/components/schemas/S3Configuration'
-          - description: ' The output data configuration that was supplied when the export job was created. '
-      description: The output data configuration that was supplied when the export job was created.
-    ValidationException: {}
-    JobStatus:
-      type: string
-      enum:
-      - SUBMITTED
-      - IN_PROGRESS
-      - COMPLETED_WITH_ERRORS
-      - COMPLETED
-      - FAILED
-      - CANCEL_SUBMITTED
-      - CANCEL_IN_PROGRESS
-      - CANCEL_COMPLETED
-      - CANCEL_FAILED
-    DatastoreId:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 32
-    JobName:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 64
-    InputDataConfig:
-      type: object
-      properties:
-        S3Uri:
-          allOf:
-          - $ref: '#/components/schemas/S3Uri'
-          - description: 'The S3Uri is the user specified S3 location of the FHIR data to be imported into AWS HealthLake. '
-      description: ' The input properties for an import job.'
-    IamRoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
-    JobId:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 32
     StartFHIRImportJobResponse:
       type: object
       required:
@@ -287,21 +285,67 @@ components:
           allOf:
           - $ref: '#/components/schemas/DatastoreId'
           - description: The AWS-generated data store ID.
-    ClientTokenString:
-      type: string
-      pattern: ^[a-zA-Z0-9-]+$
-      minLength: 1
-      maxLength: 64
-    S3Uri:
-      type: string
-      pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
-      maxLength: 1024
-    ResourceNotFoundException: {}
+    ValidationException: {}
     EncryptionKeyID:
       type: string
       pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
       minLength: 1
       maxLength: 400
+    DatastoreId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    InputDataConfig:
+      type: object
+      properties:
+        S3Uri:
+          allOf:
+          - $ref: '#/components/schemas/S3Uri'
+          - description: 'The S3Uri is the user specified S3 location of the FHIR data to be imported into AWS HealthLake. '
+      description: ' The input properties for an import job.'
+    JobId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    ResourceNotFoundException: {}
+    JobStatus:
+      type: string
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED_WITH_ERRORS
+      - COMPLETED
+      - FAILED
+      - CANCEL_SUBMITTED
+      - CANCEL_IN_PROGRESS
+      - CANCEL_COMPLETED
+      - CANCEL_FAILED
+    JobName:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 64
+    InternalServerException: {}
+    ClientTokenString:
+      type: string
+      pattern: ^[a-zA-Z0-9-]+$
+      minLength: 1
+      maxLength: 64
+    AccessDeniedException: {}
+    OutputDataConfig:
+      type: object
+      properties:
+        S3Configuration:
+          allOf:
+          - $ref: '#/components/schemas/S3Configuration'
+          - description: ' The output data configuration that was supplied when the export job was created. '
+      description: The output data configuration that was supplied when the export job was created.
+    S3Uri:
+      type: string
+      pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
+      maxLength: 1024
     S3Configuration:
       type: object
       required:
@@ -317,49 +361,6 @@ components:
           - $ref: '#/components/schemas/EncryptionKeyID'
           - description: ' The KMS key ID used to access the S3 bucket. '
       description: ' The configuration of the S3 bucket for either an import or export job. This includes assigning permissions for access. '
-  parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   securitySchemes:
     hmac:
       type: apiKey

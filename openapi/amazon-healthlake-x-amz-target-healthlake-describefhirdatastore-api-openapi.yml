@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2017-07-01'
   x-release: v4
-  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.DescribeFHIRDatastore #X Amz Target=HealthLake.DescribeFHIRDatastore #X Amz Target=HealthLake.DescribeFHIRDatastore API'
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRDatas…'
   description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -178,110 +179,54 @@ paths:
       tags:
       - '#X Amz Target=HealthLake.DescribeFHIRDatastore'
 components:
+  parameters:
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     ThrottlingException: {}
-    AuthorizationStrategy:
-      type: string
-      enum:
-      - SMART_ON_FHIR_V1
-      - AWS_AUTH
-    Boolean:
-      type: boolean
-    DatastoreName:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 256
-    FHIRVersion:
-      type: string
-      enum:
-      - R4
-    InternalServerException: {}
-    DescribeFHIRDatastoreRequest:
-      type: object
-      required:
-      - DatastoreId
-      title: DescribeFHIRDatastoreRequest
-      properties:
-        DatastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The AWS-generated data store ID.
-    DescribeFHIRDatastoreResponse:
-      type: object
-      required:
-      - DatastoreProperties
-      properties:
-        DatastoreProperties:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreProperties'
-          - description: All properties associated with a data store, including the data store ID, data store ARN, data store name, data store status, when the data store was created, data store type version, and the data store's endpoint.
     DatastoreArn:
       type: string
       pattern: ^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:[a-zA-Z0-9-]+:[0-9]{12}:datastore/.+?
-    KmsEncryptionConfig:
-      type: object
-      required:
-      - CmkType
-      properties:
-        CmkType:
-          allOf:
-          - $ref: '#/components/schemas/CmkType'
-          - description: ' The type of customer-managed-key(CMK) used for encryption. The two types of supported CMKs are customer owned CMKs and AWS owned CMKs. '
-        KmsKeyId:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionKeyID'
-          - description: ' The KMS encryption key id/alias used to encrypt the data store contents at rest. '
-      description: ' The customer-managed-key(CMK) used when creating a data store. If a customer owned key is not specified, an AWS owned key will be used for encryption. '
-    ValidationException: {}
-    CmkType:
-      type: string
-      enum:
-      - CUSTOMER_MANAGED_KMS_KEY
-      - AWS_OWNED_KMS_KEY
-    ConfigurationMetadata:
-      type: string
-    SseConfiguration:
-      type: object
-      required:
-      - KmsEncryptionConfig
-      properties:
-        KmsEncryptionConfig:
-          allOf:
-          - $ref: '#/components/schemas/KmsEncryptionConfig'
-          - description: ' The KMS encryption configuration used to provide details for data encryption. '
-      description: ' The server-side encryption key configuration for a customer provided encryption key. '
-    String:
-      type: string
-      pattern: '[\P{M}\p{M}]{0,10000}'
-      maxLength: 10000
-    PreloadDataType:
-      type: string
-      enum:
-      - SYNTHEA
-    DatastoreId:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 32
-    PreloadDataConfig:
-      type: object
-      required:
-      - PreloadDataType
-      properties:
-        PreloadDataType:
-          allOf:
-          - $ref: '#/components/schemas/PreloadDataType'
-          - description: The type of preloaded data. Only Synthea preloaded data is supported.
-      description: ' The input properties for the preloaded data store. Only data preloaded from Synthea is supported.'
-    Timestamp:
-      type: string
-      format: date-time
-    LambdaArn:
-      type: string
-      pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
-      minLength: 49
-      maxLength: 256
     IdentityProviderConfiguration:
       type: object
       required:
@@ -304,12 +249,45 @@ components:
           - $ref: '#/components/schemas/LambdaArn'
           - description: The Amazon Resource Name (ARN) of the Lambda function that you want to use to decode the access token created by the authorization server.
       description: The identity provider configuration that you gave when the data store was created.
-    ResourceNotFoundException: {}
-    EncryptionKeyID:
+    DatastoreName:
       type: string
-      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
       minLength: 1
-      maxLength: 400
+      maxLength: 256
+    KmsEncryptionConfig:
+      type: object
+      required:
+      - CmkType
+      properties:
+        CmkType:
+          allOf:
+          - $ref: '#/components/schemas/CmkType'
+          - description: ' The type of customer-managed-key(CMK) used for encryption. The two types of supported CMKs are customer owned CMKs and AWS owned CMKs. '
+        KmsKeyId:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionKeyID'
+          - description: ' The KMS encryption key id/alias used to encrypt the data store contents at rest. '
+      description: ' The customer-managed-key(CMK) used when creating a data store. If a customer owned key is not specified, an AWS owned key will be used for encryption. '
+    CmkType:
+      type: string
+      enum:
+      - CUSTOMER_MANAGED_KMS_KEY
+      - AWS_OWNED_KMS_KEY
+    DescribeFHIRDatastoreRequest:
+      type: object
+      required:
+      - DatastoreId
+      title: DescribeFHIRDatastoreRequest
+      properties:
+        DatastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The AWS-generated data store ID.
+    FHIRVersion:
+      type: string
+      enum:
+      - R4
+    ValidationException: {}
     DatastoreStatus:
       type: string
       enum:
@@ -317,6 +295,38 @@ components:
       - ACTIVE
       - DELETING
       - DELETED
+    Boolean:
+      type: boolean
+    EncryptionKeyID:
+      type: string
+      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
+      minLength: 1
+      maxLength: 400
+    DatastoreId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    PreloadDataType:
+      type: string
+      enum:
+      - SYNTHEA
+    String:
+      type: string
+      pattern: '[\P{M}\p{M}]{0,10000}'
+      maxLength: 10000
+    ResourceNotFoundException: {}
+    InternalServerException: {}
+    SseConfiguration:
+      type: object
+      required:
+      - KmsEncryptionConfig
+      properties:
+        KmsEncryptionConfig:
+          allOf:
+          - $ref: '#/components/schemas/KmsEncryptionConfig'
+          - description: ' The KMS encryption configuration used to provide details for data encryption. '
+      description: ' The server-side encryption key configuration for a customer provided encryption key. '
     DatastoreProperties:
       type: object
       required:
@@ -367,49 +377,40 @@ components:
           - $ref: '#/components/schemas/IdentityProviderConfiguration'
           - description: The identity provider that you selected when you created the data store.
       description: Displays the properties of the data store, including the ID, ARN, name, and the status of the data store.
-  parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
+    DescribeFHIRDatastoreResponse:
+      type: object
+      required:
+      - DatastoreProperties
+      properties:
+        DatastoreProperties:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreProperties'
+          - description: All properties associated with a data store, including the data store ID, data store ARN, data store name, data store status, when the data store was created, data store type version, and the data store's endpoint.
+    LambdaArn:
+      type: string
+      pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
+      minLength: 49
+      maxLength: 256
+    AuthorizationStrategy:
+      type: string
+      enum:
+      - SMART_ON_FHIR_V1
+      - AWS_AUTH
+    Timestamp:
+      type: string
+      format: date-time
+    ConfigurationMetadata:
+      type: string
+    PreloadDataConfig:
+      type: object
+      required:
+      - PreloadDataType
+      properties:
+        PreloadDataType:
+          allOf:
+          - $ref: '#/components/schemas/PreloadDataType'
+          - description: The type of preloaded data. Only Synthea preloaded data is supported.
+      description: ' The input properties for the preloaded data store. Only data preloaded from Synthea is supported.'
   securitySchemes:
     hmac:
       type: apiKey

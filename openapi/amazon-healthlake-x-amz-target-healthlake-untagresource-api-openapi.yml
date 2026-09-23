@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2017-07-01'
   x-release: v4
-  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.UntagResource #X Amz Target=HealthLake.UntagResource #X Amz Target=HealthLake.UntagResource API'
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.UntagResource API'
   description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +126,7 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: UntagResource
-      description: ' Removes tags from a data store. '
+      description: Removes tags from a data store.
       responses:
         '200':
           description: Success
@@ -167,32 +168,26 @@ paths:
       - '#X Amz Target=HealthLake.UntagResource'
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -209,17 +204,13 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    ResourceNotFoundException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    TagKeyList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TagKey'
-      minItems: 0
-      maxItems: 200
     UntagResourceRequest:
       type: object
       required:
@@ -246,6 +237,16 @@ components:
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
       minLength: 1
       maxLength: 128
+    TagKeyList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TagKey'
+      minItems: 0
+      maxItems: 200
+    UntagResourceResponse:
+      type: object
+      properties: {}
+    ResourceNotFoundException: {}
   securitySchemes:
     hmac:
       type: apiKey

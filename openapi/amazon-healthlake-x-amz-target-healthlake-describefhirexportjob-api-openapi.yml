@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2017-07-01'
   x-release: v4
-  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.DescribeFHIRExportJob #X Amz Target=HealthLake.DescribeFHIRExportJob #X Amz Target=HealthLake.DescribeFHIRExportJob API'
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.DescribeFHIRExpor…'
   description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -179,16 +180,49 @@ paths:
       - '#X Amz Target=HealthLake.DescribeFHIRExportJob'
 components:
   schemas:
-    ThrottlingException: {}
-    InternalServerException: {}
-    OutputDataConfig:
+    DescribeFHIRExportJobRequest:
       type: object
+      required:
+      - DatastoreId
+      - JobId
+      title: DescribeFHIRExportJobRequest
       properties:
-        S3Configuration:
+        DatastoreId:
           allOf:
-          - $ref: '#/components/schemas/S3Configuration'
-          - description: ' The output data configuration that was supplied when the export job was created. '
-      description: The output data configuration that was supplied when the export job was created.
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The AWS generated ID for the data store from which files are being exported from for an export job.
+        JobId:
+          allOf:
+          - $ref: '#/components/schemas/JobId'
+          - description: The AWS generated ID for an export job.
+    ThrottlingException: {}
+    IamRoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
+    Message:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 2048
+    ValidationException: {}
+    EncryptionKeyID:
+      type: string
+      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
+      minLength: 1
+      maxLength: 400
+    DatastoreId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    JobId:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+      minLength: 1
+      maxLength: 32
+    ResourceNotFoundException: {}
     ExportJobProperties:
       type: object
       required:
@@ -235,31 +269,6 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: An explanation of any errors that may have occurred during the export job.
       description: The properties of a FHIR export job, including the ID, ARN, name, and the status of the job.
-    DescribeFHIRExportJobRequest:
-      type: object
-      required:
-      - DatastoreId
-      - JobId
-      title: DescribeFHIRExportJobRequest
-      properties:
-        DatastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The AWS generated ID for the data store from which files are being exported from for an export job.
-        JobId:
-          allOf:
-          - $ref: '#/components/schemas/JobId'
-          - description: The AWS generated ID for an export job.
-    ValidationException: {}
-    DescribeFHIRExportJobResponse:
-      type: object
-      required:
-      - ExportJobProperties
-      properties:
-        ExportJobProperties:
-          allOf:
-          - $ref: '#/components/schemas/ExportJobProperties'
-          - description: 'Displays the properties of the export job, including the ID, Arn, Name, and the status of the job. '
     JobStatus:
       type: string
       enum:
@@ -272,44 +281,36 @@ components:
       - CANCEL_IN_PROGRESS
       - CANCEL_COMPLETED
       - CANCEL_FAILED
-    Message:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 2048
-    DatastoreId:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 32
+    InternalServerException: {}
     JobName:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
       minLength: 1
       maxLength: 64
-    IamRoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
-    JobId:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
-      minLength: 1
-      maxLength: 32
-    Timestamp:
-      type: string
-      format: date-time
+    DescribeFHIRExportJobResponse:
+      type: object
+      required:
+      - ExportJobProperties
+      properties:
+        ExportJobProperties:
+          allOf:
+          - $ref: '#/components/schemas/ExportJobProperties'
+          - description: 'Displays the properties of the export job, including the ID, Arn, Name, and the status of the job. '
+    OutputDataConfig:
+      type: object
+      properties:
+        S3Configuration:
+          allOf:
+          - $ref: '#/components/schemas/S3Configuration'
+          - description: ' The output data configuration that was supplied when the export job was created. '
+      description: The output data configuration that was supplied when the export job was created.
     S3Uri:
       type: string
       pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
       maxLength: 1024
-    ResourceNotFoundException: {}
-    EncryptionKeyID:
+    Timestamp:
       type: string
-      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
-      minLength: 1
-      maxLength: 400
+      format: date-time
     S3Configuration:
       type: object
       required:
@@ -326,14 +327,14 @@ components:
           - description: ' The KMS key ID used to access the S3 bucket. '
       description: ' The configuration of the S3 bucket for either an import or export job. This includes assigning permissions for access. '
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -350,14 +351,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2017-07-01'
   x-release: v4
-  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore #X Amz Target=HealthLake.CreateFHIRDatastore API'
+  title: 'Amazon HealthLake #X Amz Target=HealthLake.CreateFHIRDatasto…'
   description: AWS HealthLake is a HIPAA eligibile service that allows customers to store, transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/healthlake-2017-07-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -179,33 +180,58 @@ paths:
       - '#X Amz Target=HealthLake.CreateFHIRDatastore'
 components:
   schemas:
-    ThrottlingException: {}
-    AuthorizationStrategy:
+    TagValue:
       type: string
-      enum:
-      - SMART_ON_FHIR_V1
-      - AWS_AUTH
-    Boolean:
-      type: boolean
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 0
+      maxLength: 256
+    ThrottlingException: {}
+    TagList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+      minItems: 0
+      maxItems: 200
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    DatastoreArn:
+      type: string
+      pattern: ^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:[a-zA-Z0-9-]+:[0-9]{12}:datastore/.+?
+    IdentityProviderConfiguration:
+      type: object
+      required:
+      - AuthorizationStrategy
+      properties:
+        AuthorizationStrategy:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizationStrategy'
+          - description: The authorization strategy that you selected when you created the data store.
+        FineGrainedAuthorizationEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: If you enabled fine-grained authorization when you created the data store.
+        Metadata:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationMetadata'
+          - description: '<p>The JSON metadata elements that you want to use in your identity provider configuration. Required elements are listed based on the launch specification of the SMART application. For more information on all possible elements, see <a href="https://build.fhir.org/ig/HL7/smart-app-launch/conformance.html#metadata">Metadata</a> in SMART''s App Launch specification.</p> <p> <code>authorization_endpoint</code>: The URL to the OAuth2 authorization endpoint.</p> <p> <code>grant_types_supported</code>: An array of grant types that are supported at the token endpoint. You must provide at least one grant type option. Valid options are <code>authorization_code</code> and <code>client_credentials</code>.</p> <p> <code>token_endpoint</code>: The URL to the OAuth2 token endpoint.</p> <p> <code>capabilities</code>: An array of strings of the SMART capabilities that the authorization server supports.</p> <p> <code>code_challenge_methods_supported</code>: An array of strings of supported PKCE code challenge methods. You must include the <code>S256</code> method in the array of PKCE code challenge methods.</p>'
+        IdpLambdaArn:
+          allOf:
+          - $ref: '#/components/schemas/LambdaArn'
+          - description: The Amazon Resource Name (ARN) of the Lambda function that you want to use to decode the access token created by the authorization server.
+      description: The identity provider configuration that you gave when the data store was created.
     DatastoreName:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
       minLength: 1
       maxLength: 256
-    FHIRVersion:
+    CmkType:
       type: string
       enum:
-      - R4
-    InternalServerException: {}
-    AccessDeniedException: {}
-    DatastoreArn:
-      type: string
-      pattern: ^arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:healthlake:[a-zA-Z0-9-]+:[0-9]{12}:datastore/.+?
-    BoundedLengthString:
-      type: string
-      pattern: '[\P{M}\p{M}]{1,5000}'
-      minLength: 1
-      maxLength: 5000
+      - CUSTOMER_MANAGED_KMS_KEY
+      - AWS_OWNED_KMS_KEY
     KmsEncryptionConfig:
       type: object
       required:
@@ -220,29 +246,25 @@ components:
           - $ref: '#/components/schemas/EncryptionKeyID'
           - description: ' The KMS encryption key id/alias used to encrypt the data store contents at rest. '
       description: ' The customer-managed-key(CMK) used when creating a data store. If a customer owned key is not specified, an AWS owned key will be used for encryption. '
-    ValidationException: {}
-    CmkType:
+    FHIRVersion:
       type: string
       enum:
-      - CUSTOMER_MANAGED_KMS_KEY
-      - AWS_OWNED_KMS_KEY
-    ConfigurationMetadata:
+      - R4
+    ValidationException: {}
+    DatastoreStatus:
       type: string
-    SseConfiguration:
-      type: object
-      required:
-      - KmsEncryptionConfig
-      properties:
-        KmsEncryptionConfig:
-          allOf:
-          - $ref: '#/components/schemas/KmsEncryptionConfig'
-          - description: ' The KMS encryption configuration used to provide details for data encryption. '
-      description: ' The server-side encryption key configuration for a customer provided encryption key. '
-    TagValue:
+      enum:
+      - CREATING
+      - ACTIVE
+      - DELETING
+      - DELETED
+    Boolean:
+      type: boolean
+    EncryptionKeyID:
       type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 0
-      maxLength: 256
+      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
+      minLength: 1
+      maxLength: 400
     CreateFHIRDatastoreResponse:
       type: object
       required:
@@ -267,25 +289,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/BoundedLengthString'
           - description: The AWS endpoint for the created data store.
-    PreloadDataType:
-      type: string
-      enum:
-      - SYNTHEA
-    Tag:
-      type: object
-      required:
-      - Key
-      - Value
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: ' The key portion of a tag. Tag keys are case sensitive. '
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: ' The value portion of a tag. Tag values are case sensitive. '
-      description: ' A tag is a label consisting of a user-defined key and value. The form for tags is {"Key", "Value"} '
     DatastoreId:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
@@ -325,6 +328,59 @@ components:
           allOf:
           - $ref: '#/components/schemas/IdentityProviderConfiguration'
           - description: The configuration of the identity provider that you want to use for your data store.
+    PreloadDataType:
+      type: string
+      enum:
+      - SYNTHEA
+    InternalServerException: {}
+    SseConfiguration:
+      type: object
+      required:
+      - KmsEncryptionConfig
+      properties:
+        KmsEncryptionConfig:
+          allOf:
+          - $ref: '#/components/schemas/KmsEncryptionConfig'
+          - description: ' The KMS encryption configuration used to provide details for data encryption. '
+      description: ' The server-side encryption key configuration for a customer provided encryption key. '
+    BoundedLengthString:
+      type: string
+      pattern: '[\P{M}\p{M}]{1,5000}'
+      minLength: 1
+      maxLength: 5000
+    ClientTokenString:
+      type: string
+      pattern: ^[a-zA-Z0-9-]+$
+      minLength: 1
+      maxLength: 64
+    Tag:
+      type: object
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: ' The key portion of a tag. Tag keys are case sensitive. '
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: ' The value portion of a tag. Tag values are case sensitive. '
+      description: ' A tag is a label consisting of a user-defined key and value. The form for tags is {"Key", "Value"} '
+    AccessDeniedException: {}
+    LambdaArn:
+      type: string
+      pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
+      minLength: 49
+      maxLength: 256
+    AuthorizationStrategy:
+      type: string
+      enum:
+      - SMART_ON_FHIR_V1
+      - AWS_AUTH
+    ConfigurationMetadata:
+      type: string
     PreloadDataConfig:
       type: object
       required:
@@ -335,70 +391,15 @@ components:
           - $ref: '#/components/schemas/PreloadDataType'
           - description: The type of preloaded data. Only Synthea preloaded data is supported.
       description: ' The input properties for the preloaded data store. Only data preloaded from Synthea is supported.'
-    LambdaArn:
-      type: string
-      pattern: arn:aws:lambda:[a-z]{2}-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9\-_\.]+(:(\$LATEST|[a-zA-Z0-9\-_]+))?
-      minLength: 49
-      maxLength: 256
-    ClientTokenString:
-      type: string
-      pattern: ^[a-zA-Z0-9-]+$
-      minLength: 1
-      maxLength: 64
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    TagList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Tag'
-      minItems: 0
-      maxItems: 200
-    IdentityProviderConfiguration:
-      type: object
-      required:
-      - AuthorizationStrategy
-      properties:
-        AuthorizationStrategy:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizationStrategy'
-          - description: The authorization strategy that you selected when you created the data store.
-        FineGrainedAuthorizationEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: If you enabled fine-grained authorization when you created the data store.
-        Metadata:
-          allOf:
-          - $ref: '#/components/schemas/ConfigurationMetadata'
-          - description: '<p>The JSON metadata elements that you want to use in your identity provider configuration. Required elements are listed based on the launch specification of the SMART application. For more information on all possible elements, see <a href="https://build.fhir.org/ig/HL7/smart-app-launch/conformance.html#metadata">Metadata</a> in SMART''s App Launch specification.</p> <p> <code>authorization_endpoint</code>: The URL to the OAuth2 authorization endpoint.</p> <p> <code>grant_types_supported</code>: An array of grant types that are supported at the token endpoint. You must provide at least one grant type option. Valid options are <code>authorization_code</code> and <code>client_credentials</code>.</p> <p> <code>token_endpoint</code>: The URL to the OAuth2 token endpoint.</p> <p> <code>capabilities</code>: An array of strings of the SMART capabilities that the authorization server supports.</p> <p> <code>code_challenge_methods_supported</code>: An array of strings of supported PKCE code challenge methods. You must include the <code>S256</code> method in the array of PKCE code challenge methods.</p>'
-        IdpLambdaArn:
-          allOf:
-          - $ref: '#/components/schemas/LambdaArn'
-          - description: The Amazon Resource Name (ARN) of the Lambda function that you want to use to decode the access token created by the authorization server.
-      description: The identity provider configuration that you gave when the data store was created.
-    EncryptionKeyID:
-      type: string
-      pattern: (arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:kms:)?([a-z]{2}-[a-z]+(-[a-z]+)?-\d:)?(\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))
-      minLength: 1
-      maxLength: 400
-    DatastoreStatus:
-      type: string
-      enum:
-      - CREATING
-      - ACTIVE
-      - DELETING
-      - DELETED
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -415,14 +416,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string

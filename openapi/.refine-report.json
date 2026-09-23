@@ -1,19 +1,7 @@
 {
   "provider": "amazon-healthlake",
   "sources": [
-    "amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-tagresource-api-openapi.yml",
-    "amazon-healthlake-x-amz-target-healthlake-untagresource-api-openapi.yml"
+    "_original/amazon-healthlake-openapi.yaml"
   ],
   "outputs": [
     "amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml",
@@ -34,7 +22,49 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-healthlake-openapi.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.CreateFHIRDatastore -> #X Amz Target=HealthLake.CreateFHIRDatastore",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.DeleteFHIRDatastore -> #X Amz Target=HealthLake.DeleteFHIRDatastore",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.DescribeFHIRDatastore -> #X Amz Target=HealthLake.DescribeFHIRDatastore",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.DescribeFHIRExportJob -> #X Amz Target=HealthLake.DescribeFHIRExportJob",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.DescribeFHIRImportJob -> #X Amz Target=HealthLake.DescribeFHIRImportJob",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.ListFHIRDatastores -> #X Amz Target=HealthLake.ListFHIRDatastores",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.ListFHIRExportJobs -> #X Amz Target=HealthLake.ListFHIRExportJobs",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.ListFHIRImportJobs -> #X Amz Target=HealthLake.ListFHIRImportJobs",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.ListTagsForResource -> #X Amz Target=HealthLake.ListTagsForResource",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.StartFHIRExportJob -> #X Amz Target=HealthLake.StartFHIRExportJob",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.StartFHIRImportJob -> #X Amz Target=HealthLake.StartFHIRImportJob",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.TagResource -> #X Amz Target=HealthLake.TagResource",
+    "amazon-healthlake-openapi.yaml: tagged paths POST /#X-Amz-Target=HealthLake.UntagResource -> #X Amz Target=HealthLake.UntagResource",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.CreateFHIRDatastore",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.DeleteFHIRDatastore",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.DescribeFHIRDatastore",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.DescribeFHIRExportJob",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.DescribeFHIRImportJob",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.ListFHIRDatastores",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.ListFHIRExportJobs",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.ListFHIRImportJobs",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.ListTagsForResource",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.StartFHIRExportJob",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.StartFHIRImportJob",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.TagResource",
+    "amazon-healthlake-openapi.yaml: declared missing tag: #X Amz Target=HealthLake.UntagResource",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-healthlake-x-amz-target-healthlake-createfhirdatastore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-deletefhirdatastore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirdatastore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirexportjob-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-describefhirimportjob-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirdatastores-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirexportjobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-listfhirimportjobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-listtagsforresource-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-startfhirexportjob-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-startfhirimportjob-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-tagresource-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthlake-x-amz-target-healthlake-untagresource-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
